@@ -5,7 +5,7 @@
 <ol>
   <li>git clone https://github.com/HHvis/VTMCphp.git</li>
   <li>Projekto terminale: npm install</li>
-  <li>Susikurkite MySql duombaze pavadinimu laravel</li>
+  <li>Susikurkite MySql duombaze pavadinimu "laravel"</li>
   <li>Projekto terminale: php artisan migrate</li>
   <li>Projekto terminale: php artisan serve</li>
 </ol> 
