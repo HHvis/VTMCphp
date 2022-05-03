@@ -19,7 +19,7 @@ git clone https://github.com/HHvis/VTMCphp.git
 ```
 npm install
 ```
-3. Susikurkite MySql duombaze arba kataloge parasykite
+3. Susikurkite MySql duombaze 'laravel' arba kataloge parasykite
 ```
 php artisan db
 create database laravel
