@@ -23,7 +23,7 @@ npm install
 ```
 php artisan db
 create database laravel
-php artisan migrate:fresh
+php artisan migrate --seed
 ```
 4. Projekto paleidimas
 ```
