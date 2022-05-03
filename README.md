@@ -23,7 +23,17 @@
 ```
 git clone https://github.com/HHvis/VTMCphp.git
 ```
-2. Projekto kataloge cd <katalogoPavadinimas> 
+2. Terminale - cd VTMCphp
 ```
 npm install
+```
+3. Susikurkite MySql duombaze arba kataloge parasykite
+```
+php artisan db
+create database laravel
+php artisan migrate:fresh
+```
+4. Projekto paleidimas
+```
+php artisan serve
 ```
