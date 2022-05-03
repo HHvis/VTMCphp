@@ -23,9 +23,12 @@ npm install
 ```
 php artisan db
 create database laravel
+```
+4. Reikalingos migracijos ir seederiai
+```
 php artisan migrate --seed
 ```
-4. Projekto paleidimas
+6. Projekto paleidimas
 ```
 php artisan serve
 ```
