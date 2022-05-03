@@ -18,4 +18,10 @@
   <li>Projekto terminale: php artisan migrate</li>
   <li>Projekto terminale: php artisan serve</li>
 </ol> 
-# The largest heading
+
+Some basic Git commands are:
+```
+git status
+git add
+git commit
+```
