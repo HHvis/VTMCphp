@@ -1,15 +1,16 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './App.css';
 import { BsFillArrowRightSquareFill } from "react-icons/bs";
 import CreateIncomeModal from './IncomeTable/CreateIncomeModal';
 import CreateExpenseModal from './ExpenseTable/CreateExpenseModal';
-
-
+import IncomeExpenseSummary from './IncomeExpenseSummary'
 
 function App() {
   let urlList = {
     table: '/table'
   }
+
+  const [selectedDate, setSelectedDate] = useState(new Date()); 
 
   return (
     <div>
@@ -87,7 +88,14 @@ function App() {
             </div>
             <div className="card-body">
                 <div className="chart-area">
-                    <canvas id="myAreaChart"></canvas>
+                    {/* <canvas id="myAreaChart"></canvas>  */}
+                    <IncomeExpenseSummary />
+                </div>
+                <div className="row">
+                    <div className="col-6 text-center">
+                        <div className="text-success">Žaliu laukeliu pažymėtos pajamos*</div>
+                        <div className="text-danger">Raudonu laukeliu pažymėtos išlaidos*</div>
+                    </div>
                 </div>
             </div>
         </div>
