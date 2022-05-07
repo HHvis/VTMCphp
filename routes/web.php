@@ -34,3 +34,8 @@ Route::get('/get/expense/list', [ExpenseController::class, 'getExpenseList'])->n
 Route::post('/update/expense/data', [ExpenseController::class, 'updateExpenseData']);
 Route::delete('/delete/expense/data/{expense}', [ExpenseController::class, 'destroy']);
 Route::post('/store/expense/data', [ExpenseController::class, 'store']);
+
+
+
+Route::get('/get/incomes', [App\Http\Controllers\IncomeExpenseController::class, 'getIncomeList']);
+Route::get('/get/expenses', [App\Http\Controllers\IncomeExpenseController::class, 'getExpenseList']);
