@@ -10,8 +10,6 @@ function App() {
     table: '/table'
   }
 
-  const [selectedDate, setSelectedDate] = useState(new Date()); 
-
   return (
     <div>
       <div className="container-fluid">
