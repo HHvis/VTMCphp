@@ -25,9 +25,9 @@ npm install
 php artisan db
 create database laravel
 ```
-4. Reikalingos migracijos ir seederiai
+4. Reikalingos migracijos duomenims
 ```
-php artisan migrate --seed
+php artisan migrate
 ```
 6. Projekto paleidimas
 ```
