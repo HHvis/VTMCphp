@@ -18,8 +18,8 @@ return new class extends Migration
             $table->string('title', 100);
             $table->integer('amount');
             $table->string('category', 75);
-            $table->date('created_at');
-            $table->date('updated_at');
+            $table->datetime('created_at');
+            $table->datetime('updated_at');
         });
     }
 
