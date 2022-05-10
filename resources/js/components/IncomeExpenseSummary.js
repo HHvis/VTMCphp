@@ -51,21 +51,8 @@ class IncomeExpenseSummary extends Component {
 
     render(){
         return(
-            <div className="row">
-    <div className="col-xl-8 col-lg-7">
-        <div className="card border-left-success shadow mb-4">
-            <div
-                className="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                <h6 className="text-xs font-weight-bold text-secondary text-uppercase mb-1">Pajamų ir išlaidų suvestinė</h6>
-                <div className="dropdown no-arrow">
-                   <h2><a href={urlList.table}><BsFillArrowRightSquareFill color="#adb5bd"/></a></h2>
-                </div>
-            </div>
-            <div className="card-body">
-                <div className="chart-area"></div>
             <div>
                 <table className="table"> 
-                {/* <toast/> */}
                 <thead>
                     <tr>
                         <th scope="col">Data</th>
@@ -78,17 +65,13 @@ class IncomeExpenseSummary extends Component {
             {this.state.rows.slice(0, 7).map((row) => row.type === 'expense' ? <ExpenseRow data={row} key={row.title}/> : <IncomeRow data={row} key={row.title}/>)}
       </tbody>
             </table>
-            </div>
-            </div>
-                <div className="row">
-                    <div className="col-6 text-center">
-                        <div className="text-success">Žaliu laukeliu pažymėtos pajamos*</div>
-                        <div className="text-danger">Raudonu laukeliu pažymėtos išlaidos*</div>
+            <div className="row">
+                    <div className="col-6 text-left">
+                        <div className="text-success">Žaliai pažymėtos pajamos*</div>
+                        <div className="text-danger">Raudonai pažymėtos išlaidos*</div>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
     );
     }
   }
