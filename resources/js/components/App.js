@@ -66,38 +66,11 @@ function App() {
             <div className="card-body" id="expense"></div>
     </div>
     </div>
-    
-    
-
-
-
     </div>
 
-          
-<div className="row">
-    <div className="col-xl-8 col-lg-7">
-        <div className="card border-left-success shadow mb-4">
-            <div
-                className="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                <h6 className="text-xs font-weight-bold text-secondary text-uppercase mb-1">Pajamų ir išlaidų suvestinė</h6>
-                <div className="dropdown no-arrow">
-                   <h2><a href={urlList.table}><BsFillArrowRightSquareFill color="#adb5bd"/></a></h2>
-                </div>
-            </div>
-            <div className="card-body">
-                <div className="chart-area">
-                    {/* <canvas id="myAreaChart"></canvas>  */}
-                    <IncomeExpenseSummary />
-                </div>
-                <div className="row">
-                    <div className="col-6 text-center">
-                        <div className="text-success">Žaliu laukeliu pažymėtos pajamos*</div>
-                        <div className="text-danger">Raudonu laukeliu pažymėtos išlaidos*</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+    {/* IncomeExpenseSummary */}
+    <IncomeExpenseSummary />
+              
     <div className="col-xl-4 col-lg-5">
         <div className="card border-left-success shadow mb-4">
             <div
@@ -176,8 +149,6 @@ function App() {
 
 </div>
 </div>
-</div>
-
   )
 }
 
