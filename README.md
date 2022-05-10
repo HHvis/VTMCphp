@@ -12,7 +12,7 @@
 
 <h2 align="center">PROJEKTO PALEIDIMAS</h2>
 
-1. Git Clone
+1. Copy/Paste terminale
 ```
 git clone https://github.com/HHvis/VTMCphp.git
 ```
@@ -20,14 +20,14 @@ git clone https://github.com/HHvis/VTMCphp.git
 ```
 npm install
 ```
-3. Susikurkite MySql duombaze 'laravel' arba kataloge parasykite
+3. Terminal kataloge parasykite kas apacioje. Jei naudojat lokalu XAMPP, tai eikite i phpMyAdmin puslapi ir sukurkite nauja duombaze 'laravel', palikite ja tuscia.
 ```
 php artisan db
 create database laravel
 ```
-4. Reikalingos migracijos duomenims
+4. Reikalingos migracijos duomenims, siulau is karto nunulinti visa duombaze, pries pabaiga padarysiu daug Fake duomenu, todel ranka nereikes rasyti.
 ```
-php artisan migrate
+php artisan migrate:fresh
 ```
 6. Projekto paleidimas
 ```
