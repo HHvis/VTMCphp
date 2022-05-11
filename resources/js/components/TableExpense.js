@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { Component } from 'react'
-import ExpenseRow from './ExpenseRow';
+import ExpenseTableFilter from './ExpenseTableFilter';
 
 class TableExpense extends Component {
 
@@ -43,13 +43,13 @@ class TableExpense extends Component {
                 <thead>
                     <tr>
                         <th scope="col col-4">Data</th>
-                        <th scope="col col-4">Parduotuvė</th>
-                        <th scope="col col-4">Suma</th>
+                        <th scope="col col-4">Pavadinimas</th>
                         <th scope="col col-4">Kategorija</th>
+                        <th scope="col col-4">Suma</th>
                     </tr>
                 </thead>
       <tbody>
-            {this.state.rows.slice(0, 7).map((row) => row.type === 'expense' ? <ExpenseRow data={row} key={row.title}/> : <ExpenseRow data={row} key={row.title}/>)}
+            {this.state.rows.slice(0, 7).map((row) => row.type === 'expense' ? <ExpenseTableFilter data={row} key={row.title}/> : <ExpenseRow data={row} key={row.title}/>)}
             <tr className="table-secondary">
                 <td></td>
                 <td></td>
