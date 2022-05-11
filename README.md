@@ -5,6 +5,7 @@
 
 <ul>
   <li>PHP 8.0</li>
+  **PHP 8.0**
   <li>Laravel 8</li>
   <li>React 17</li>
   <li>MySql xx</li>
