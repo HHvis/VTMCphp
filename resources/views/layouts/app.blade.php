@@ -19,7 +19,7 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
-<body>
+<body class="d-flex flex-column min-vh-100">
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
@@ -79,7 +79,7 @@
             @yield('content')
         </main>
     </div> 
-    <footer class="sticky-footer bg-white p-4">
+    <footer class="mt-auto bg-white p-4">
             <div class="container my-auto">
                 <div class="copyright text-center my-auto">
                     <span>Copyright &copy; VTMCphp 2022</span>

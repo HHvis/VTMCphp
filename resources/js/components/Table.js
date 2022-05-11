@@ -1,5 +1,8 @@
 import React from 'react'
 import { BsFillArrowLeftSquareFill } from "react-icons/bs";
+import TableExpense from './TableExpense';
+
+
 
 function Table() {
     let urlList = {
@@ -41,40 +44,11 @@ function Table() {
     <button type="submit" className="btn btn-outline-secondary">Filtruoti</button>
   </div>
 </form>
-    <table className="table table-hover">
-  <thead>
-    <tr>
-      <th scope="col">Data</th>
-      <th scope="col">Parduotuvė</th>
-      <th scope="col">Kategorija</th>
-      <th scope="col">Suma</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">2022 02 15</th>
-      <td>Danija</td>
-      <td>Drabužiai</td>
-      <td>160 Eur</td>
-    </tr>
-    <tr>
-      <th scope="row">2022 02 16</th>
-      <td>Maxima</td>
-      <td>Maistas</td>
-      <td>20 Eur</td>
-    </tr>
-    <tr className="table-secondary">
-      <td></td>
-      <td></td>
-      <td><b>Visa išlaidų suma</b></td>
-      <td><b className="number-xl">2229 Eur</b></td>
-    </tr>
-  </tbody>
-</table>
-<div className="d-grid gap-2 d-md-flex justify-content-md-end">
+<TableExpense />
+</div>
+        <div className="d-grid gap-2 d-md-flex justify-content-md-end">
   <button className="btn btn-secondary gray-500 me-md-2" type="button">Atsisiųsti CSV failą</button>
 </div>
-        </div>
     </div>
 
   )

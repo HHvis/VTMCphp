@@ -3,7 +3,7 @@ import './App.css';
 import { BsFillArrowRightSquareFill } from "react-icons/bs";
 import CreateIncomeModal from './IncomeTable/CreateIncomeModal';
 import CreateExpenseModal from './ExpenseTable/CreateExpenseModal';
-import IncomeExpenseSummary from './IncomeExpenseSummary'
+import IncomeExpenseSummary from './IncomeExpenseSummary';
 
 function App() {
   let urlList = {
@@ -69,7 +69,7 @@ function App() {
     </div>
 
     <div className="row">
-    <div className="col-xl-6 col-lg-7">
+    <div className="col-xl-6 col-lg-6 col-12">
         <div className="card border-left-success shadow mb-4">
             <div
                 className="card-header py-3 d-flex flex-row align-items-center justify-content-between">
@@ -85,7 +85,7 @@ function App() {
             </div>
         </div>
               
-    <div className="col-xl-6 col-lg-6">
+    <div className="col-xl-6 col-lg-6 col-12">
         <div className="card border-left-success shadow mb-4">
             <div
                 className="card-header py-3 d-flex flex-row align-items-center justify-content-between">
@@ -98,7 +98,7 @@ function App() {
         </div>
     </div>
 </div>
-</div>
+    </div>
 
 <div className="row">
     <div className="col mb-4">

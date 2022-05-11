@@ -66,7 +66,7 @@ class IncomeExpenseSummary extends Component {
       </tbody>
             </table>
             <div className="row">
-                    <div className="col-6 text-left">
+                    <div className="col-12 text-left">
                         <div className="text-success">Žaliai pažymėtos pajamos*</div>
                         <div className="text-danger">Raudonai pažymėtos išlaidos*</div>
                     </div>
