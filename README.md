@@ -4,8 +4,7 @@
 <h2>Privalomos Programos</h2>
 
 <ul>
-  <li>PHP 8.0</li>
-  **PHP 8.0**
+  <li>**PHP_8.0_**</li>
   <li>Laravel 8</li>
   <li>React 17</li>
   <li>MySql xx</li>
