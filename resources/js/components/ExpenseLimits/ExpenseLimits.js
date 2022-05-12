@@ -2,14 +2,15 @@ import axios from 'axios';
 import React, { Component } from 'react'
 import ExpenseLimit from './ExpenseLimit';
 
-class ExpenseLimits extends Component {
 
+class ExpenseLimits extends Component {
+    
     constructor(props) {
         super(props);
         this.state = {
             ExpenseLimitProgress:null,
             amount:null,
-            expnese_id:null,
+            expnese_id:0,
             limits:[],
             
         }
@@ -27,13 +28,12 @@ class ExpenseLimits extends Component {
       }
       
       storeLimitData = () => {
+        if (this.state.amount>1 && this.state.amount<99999 && this.state.expnese_id>0){    
         axios.post('store/limit/data', {
             amount:this.state.amount,
             expnese_id:this.state.expnese_id,    
-        }).then(() =>{
-            location.reload();
-    })
-      }
+        })
+    }}
 
       componentDidMount(){
         this.getLimits();
@@ -47,10 +47,10 @@ class ExpenseLimits extends Component {
         }); 
     }
 
+    
 
 
-    render(){
-
+    render(){    
         return (
             <>
                 <div className="card-header py-3">
@@ -59,8 +59,8 @@ class ExpenseLimits extends Component {
                             <label className="text-xs font-weight-bold text-secondary text-uppercase mb-1" >Limitų nustatymai</label>
                         </div>
                         <div className=' col-md-6'>
-                                <select className="form-control col-md-4" id="category" onChange={this.LimitExpenseCategory} required>
-                                  <option defaultValue>Kategorija</option>
+                                <select className="form-control col-md-4" id="category" onChange={this.LimitExpenseCategory} >
+                                <option defaultValue >Kategorija</option>
                                   <option value="1">Maistui</option>
                                   <option value="2">Drabužiams</option>
                                   <option value="3">Vaistams</option>
@@ -70,10 +70,10 @@ class ExpenseLimits extends Component {
                         </div>
                         <div className="col">
                             <label htmlFor="LimitAmount" className="visually-hidden">Limitas</label>
-                            <input type="number" className="form-control" id="LimitAmount" min="1" max='2000000' placeholder="Limito suma" onChange={this.LimitExpenseAmount} required/>
+                            <input type="number" className="form-control" id="LimitAmount" placeholder="Limito suma" onChange={this.LimitExpenseAmount}  min="1" max="99999" required={true}/>
                         </div>
-                        <div className="col">
-                            <input type="button" value="Pridėti" className="btn btn-success" onClick={this.storeLimitData} />
+                        <div className="col"><<<<<<< limits
+                            <input type="submit" value="Pridėti" className="btn btn-outline-secondary" onClick={this.storeLimitData} />
                         </div>
                     </form>
                 </div>
