@@ -14,7 +14,7 @@ function Table() {
     <h3 className='text-center display-5'>Išlaidų sąrašas</h3>
     <form className="row g-3">
   <div className="col-md p-2">
-    <label className="text-xs font-weight-bold text-secondary text-uppercase mb-1 d-md-flex justify-content-md-end" >Filtruoti pagal</label>
+    <label className="text-xs font-weight-bold text-secondary text-uppercase mb-1 d-md-flex justify-content-md-start" >Filtruoti pagal</label>
   </div>
   <div className="col-md">
     <label htmlFor="exampleDataList" className="visually-hidden">Kategorija</label>

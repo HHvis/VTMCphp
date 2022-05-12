@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 use Illuminate\Support\Facades\DB;
+use App\Models\Expense;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -30,5 +31,8 @@ class DatabaseSeeder extends Seeder
         DB::table('expense_category')->insert([   
             'id' => 5,
             'pavadinimas' => 'Auto taisymui']);
+        
+        Expense::factory(30)->create();
+
     }
 }
