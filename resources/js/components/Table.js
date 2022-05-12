@@ -2,8 +2,6 @@ import React from 'react'
 import { BsFillArrowLeftSquareFill } from "react-icons/bs";
 import TableExpense from './TableExpense';
 
-
-
 function Table() {
     let urlList = {
         link: '#',

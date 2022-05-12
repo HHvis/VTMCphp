@@ -8,14 +8,13 @@ class TableExpense extends Component {
         super(props);
         this.state = {
             expenses:[],
-            rows: []
+            rows: [],
         }
     }
 
-
     componentDidUpdate(prevProps, prevState) {
        if(prevState.expenses !== this.state.expenses) {
-          const updatedExpenses = [...this.state.expenses].map(expense => ({...expense, type: 'expense'})) 
+          const updatedExpenses = [...this.state.expenses].map(expense => ({...expense, type: 'expense'}))
           const sortedRows = [...updatedExpenses].sort((a,b) => new Date(b.created_at) - new Date(a.created_at)) 
           this.setState({ rows: sortedRows })
        }
@@ -37,6 +36,7 @@ class TableExpense extends Component {
     
 
     render(){
+        const sum = [].reduce((partialSum, a) => partialSum + a, 0);
         return(
             <div>
                 <table className="table"> 
@@ -49,12 +49,12 @@ class TableExpense extends Component {
                     </tr>
                 </thead>
       <tbody>
-            {this.state.rows.slice(0, 7).map((row) => row.type === 'expense' ? <ExpenseTableFilter data={row} key={row.title}/> : <ExpenseRow data={row} key={row.title}/>)}
+            {this.state.rows.slice(0, 7).map((row) => row.type === 'expense' ? <ExpenseTableFilter data={row} key={row.title}/> : <ExpenseTableFilter data={row} key={row.title}/>)}
             <tr className="table-secondary">
                 <td></td>
                 <td></td>
                 <td><b>Visa išlaidų suma</b></td>
-                <td><b className="number-xl"> Eur</b></td>
+                <td><b className="number-xl">{sum} Eur</b></td>
             </tr>
       </tbody>
     </table>
