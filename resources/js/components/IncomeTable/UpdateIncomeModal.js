@@ -102,11 +102,9 @@ class UpdateIncomeModal extends Component {
                       <div className='form-group col-md-6'>
                                 <select className="form-control col-md-5" id="category" onChange={this.inputIncomeCategory} required>
                                   <option selected>Kategorija</option>
-                                  <option value="Maistui">Maistui</option>
-                                  <option value="Drabužiams">Drabužiams</option>
-                                  <option value="Vaistams">Vaistams</option>
-                                  <option value="Kurui">Kurui</option>
-                                  <option value="Auto taisymui">Auto taisymui</option>
+                                  <option value="Atlyginimas">Atlyginimas</option>
+                                  <option value="Palukanos">Palukanos</option>
+                                  <option value="Dovanos">Dovanos</option>
                                 </select>
                           </div>
                     </form>
