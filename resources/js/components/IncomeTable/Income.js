@@ -34,7 +34,7 @@ class Income extends Component {
                     {/* <toast/> */}
                         <thead>
                            <tr>
-              <th scope="col" width="10%" >Id</th>
+              <th scope="col" width="10%" >Data</th>
               <th scope="col" width="25%">Pavadinimas</th>
               <th scope="col" width="5%">Suma</th>
               <th scope="col" width="25%">Kategorija</th>
