@@ -99,16 +99,14 @@ function App() {
         </div>
     </div>
 </div>
-</div>
-
-    <div className="row">
+<div className="row">
         <div className="col mb-4">
             <div className="card shadow mb-4">           
                 <ExpenseLimits/>
             </div>
         </div>
     </div>
-
+</div>
 </div>
   )
 }
