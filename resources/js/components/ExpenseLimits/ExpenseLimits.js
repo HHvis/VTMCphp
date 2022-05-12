@@ -72,7 +72,7 @@ class ExpenseLimits extends Component {
                             <label htmlFor="LimitAmount" className="visually-hidden">Limitas</label>
                             <input type="number" className="form-control" id="LimitAmount" placeholder="Limito suma" onChange={this.LimitExpenseAmount}  min="1" max="99999" required={true}/>
                         </div>
-                        <div className="col">
+                        <div className="col"><<<<<<< limits
                             <input type="submit" value="Pridėti" className="btn btn-outline-secondary" onClick={this.storeLimitData} />
                         </div>
                     </form>

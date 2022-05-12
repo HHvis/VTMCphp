@@ -27,7 +27,7 @@ create database laravel
 ```
 4. Reikalingos migracijos duomenims, siulau is karto nunulinti visa duombaze, pries pabaiga padarysiu daug Fake duomenu, todel ranka nereikes rasyti.
 ```
-php artisan migrate:fresh
+php artisan migrate:fresh --seed
 ```
 6. Projekto paleidimas
 ```
