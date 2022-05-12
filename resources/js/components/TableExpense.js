@@ -2,13 +2,15 @@ import axios from 'axios';
 import React, { Component } from 'react'
 import ExpenseTableFilter from './ExpenseTableFilter';
 
+
 class TableExpense extends Component {
 
     constructor(props) {
         super(props);
         this.state = {
             expenses:[],
-            rows: [],
+            sumExpense: 0,
+            rows: []
         }
     }
 
@@ -31,12 +33,15 @@ class TableExpense extends Component {
             this.setState({
                 expenses: response.data
             });
+            let sum = 0;
+            for(let i = 0; i <= Object.keys(response.data).length - 1; i++){
+                sum = sum + response.data[i].amount;
+            }
+            this.setState({sumExpense: sum})
         });
     }
-    
 
     render(){
-        const sum = [].reduce((partialSum, a) => partialSum + a, 0);
         return(
             <div>
                 <table className="table"> 
@@ -54,7 +59,7 @@ class TableExpense extends Component {
                 <td></td>
                 <td></td>
                 <td><b>Visa išlaidų suma</b></td>
-                <td><b className="number-xl">{sum} Eur</b></td>
+                <td><b className="number-xl">{this.state.sumExpense} Eur</b></td>
             </tr>
       </tbody>
     </table>
