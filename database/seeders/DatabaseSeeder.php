@@ -1,6 +1,7 @@
 <?php
 
 namespace Database\Seeders;
+use Illuminate\Support\Facades\DB;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -14,6 +15,20 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
+        DB::table('expense_category')->insert([
+            'id' => 1,
+            'pavadinimas' => 'Maistui']);
+        DB::table('expense_category')->insert([           
+            'id' => 2,
+            'pavadinimas' => 'Drabužiams']);
+        DB::table('expense_category')->insert([   
+            'id' => 3,
+            'pavadinimas' => 'Vaistams']);
+        DB::table('expense_category')->insert([   
+            'id' => 4,
+            'pavadinimas' => 'Kurui']);
+        DB::table('expense_category')->insert([   
+            'id' => 5,
+            'pavadinimas' => 'Auto taisymui']);
     }
 }

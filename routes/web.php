@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\IncomeController;
 use App\Http\Controllers\ExpenseController;
+use App\Http\Controllers\LimitController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -35,7 +36,8 @@ Route::post('/update/expense/data', [ExpenseController::class, 'updateExpenseDat
 Route::delete('/delete/expense/data/{expense}', [ExpenseController::class, 'destroy']);
 Route::post('/store/expense/data', [ExpenseController::class, 'store']);
 
-
-
 Route::get('/get/incomes', [App\Http\Controllers\IncomeExpenseController::class, 'getIncomeList']);
 Route::get('/get/expenses', [App\Http\Controllers\IncomeExpenseController::class, 'getExpenseList']);
+
+Route::post('/store/limit/data', [LimitController::class, 'storeLimits']);
+Route::get('/get/limits', [LimitController::class, 'getLimits']);
