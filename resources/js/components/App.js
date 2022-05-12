@@ -41,9 +41,9 @@ function App() {
     </div>
 
     <div className="row">
-    <div className="col-xl-6 col-lg-12 mb-4">
-        <div className="card shadow mb-4">
-        <div className="card-header py-3">
+    <div className="col-xl-6 col-lg-12 col-sm-12 mb-2">
+        <div className="card shadow mb-2">
+        <div className="card-header py-1">
             <div className="row g-3">
             <div className="col-md p-2">
                 <label className="text-xs font-weight-bold text-secondary text-uppercase mb-1">Pajamos</label>
@@ -54,9 +54,9 @@ function App() {
             <div className="card-body" id="income"></div>
     </div>
     </div>
-    <div className="col-xl-6 col-lg-12 mb-4">
-        <div className="card shadow mb-4">
-        <div className="card-header py-3">
+    <div className="col-xl-6 col-lg-12 col-sm-12 mb-2">
+        <div className="card shadow mb-2">
+        <div className="card-header py-1">
             <div className="row g-3">
             <div className="col-md p-2">
                 <label className="text-xs font-weight-bold text-secondary text-uppercase mb-1">Išlaidos</label>
