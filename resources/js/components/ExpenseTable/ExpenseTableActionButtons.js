@@ -34,7 +34,7 @@ class ExpenseTableActionButtons extends Component {
             <div className="btn-group btn-group-sm" role="group">
 
                 <button type="button" 
-                    className="btn btn-warning" 
+                    className="btn btn-warning btn-sm" 
                     data-bs-toggle="modal" 
                     data-bs-target={"#UpdateExpenseModal"+this.props.eachRowId}
                     onClick={() => {this.getExpenseDetails(this.props.eachRowId)} }
@@ -43,7 +43,7 @@ class ExpenseTableActionButtons extends Component {
                 <UpdateExpenseModal modalExpenseId={this.props.eachRowId} expenseData={this.state}/>
 
                 <button type="button" 
-                    className="btn btn-danger" 
+                    className="btn btn-danger btn-sm" 
                     data-bs-toggle="modal" 
                     data-bs-target={"#DeleteExpenseModal"+this.props.eachRowId}
                     onClick={() => {this.getExpenseDetails(this.props.eachRowId)} }

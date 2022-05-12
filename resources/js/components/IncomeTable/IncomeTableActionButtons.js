@@ -34,7 +34,7 @@ class IncomeTableActionButtons extends Component {
             <div className="btn-group btn-group-sm" role="group">
 
                 <button type="button" 
-                    className="btn btn-warning" 
+                    className="btn btn-warning btn-sm" 
                     data-bs-toggle="modal" 
                     data-bs-target={"#UpdateIncomeModal"+this.props.eachRowId}
                     onClick={() => {this.getIncomeDetails(this.props.eachRowId)} }
@@ -43,7 +43,7 @@ class IncomeTableActionButtons extends Component {
                 <UpdateIncomeModal modalIncomeId={this.props.eachRowId} incomeData={this.state}/>
 
                 <button type="button" 
-                    className="btn btn-danger" 
+                    className="btn btn-danger btn-sm" 
                     data-bs-toggle="modal" 
                     data-bs-target={"#DeleteIncomeModal"+this.props.eachRowId}
                     onClick={() => {this.getIncomeDetails(this.props.eachRowId)} }

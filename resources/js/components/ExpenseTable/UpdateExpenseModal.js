@@ -112,9 +112,9 @@ class UpdateExpenseModal extends Component {
                     </form>
                   
                   <div className="modal-footer">
-                    <input type="submit" className='btn btn-info'
+                    <input type="submit" className='btn btn-secondary btn-sm'
                            value="Pakeisti" onClick={this.updateExpenseData}/>
-                    <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Uždaryti</button>
+                    <button type="button" className="btn btn-light btn-sm" data-bs-dismiss="modal">Uždaryti</button>
                   </div>
                 </div>
               </div>

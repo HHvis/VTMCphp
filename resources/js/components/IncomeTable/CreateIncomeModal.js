@@ -77,9 +77,9 @@ class CreateIncomeModal extends Component {
                         </form>
                       </div>
                       <div className="modal-footer">
-                        <input type="button" className="btn btn-light btn-sm"
+                        <input type="button" className="btn btn-secondary btn-sm"
                          value="Išsaugoti" onClick={this.storeIncomeData} required/>
-                    <button type="button" className="btn btn-secondary close btn-sm"  data-dismiss="modal">Uždaryti</button>
+                    <button type="button" className="btn btn-light close btn-sm"  data-dismiss="modal">Uždaryti</button>
                   </div>
                 </div>
               </div>

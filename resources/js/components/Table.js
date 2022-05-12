@@ -45,7 +45,7 @@ function Table() {
 <TableExpense />
 </div>
         <div className="d-grid gap-2 d-md-flex justify-content-md-end">
-  <button className="btn btn-secondary gray-500 me-md-2" type="button">Atsisiųsti CSV failą</button>
+  <button className="btn btn-secondary gray-500 me-md-2" type="button">Atsisiųsti CSV dokumentą</button>
 </div>
     </div>
 

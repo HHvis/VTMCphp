@@ -21,13 +21,13 @@ class DeleteIncomeModal extends Component {
                   <div className="modal-header">
                     <h5 className="modal-title" id="exampleModalLongTitle">Ištrinti įrašą</h5>
                   </div>
-                  <div className="modal-body">
+                  <div className="modal-body text-center">
                        Ar norite ištrinti šį įrašą?   
                   <div className="modal-footer">
-                    <button type="button" className="btn btn-success" data-bs-danger="modal"
+                    <button type="button" className="btn btn-success btn-sm" data-bs-danger="modal"
                         onClick={()=>{this.deleteIncomeData(this.props.modalIncomeId)}}
                         >Taip</button>  
-                    <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Uždaryti</button>
+                    <button type="button" className="btn btn-secondary btn-sm" data-bs-dismiss="modal">Uždaryti</button>
                   </div>
                 </div>
               </div>
