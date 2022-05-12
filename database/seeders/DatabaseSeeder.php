@@ -31,8 +31,5 @@ class DatabaseSeeder extends Seeder
         DB::table('expense_category')->insert([   
             'id' => 5,
             'pavadinimas' => 'Auto taisymui']);
-        
-        Expense::factory(30)->create();
-
     }
 }
