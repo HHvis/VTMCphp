@@ -11,7 +11,7 @@ function Table() {
     <div>
     <div className="container-fluid">
     <h2><a href={urlList.home}><BsFillArrowLeftSquareFill color="#adb5bd"/></a></h2>
-    <h3 className='text-center display-5'>Išlaidų sąrašas</h3>
+    <h3 className='text-center display-6'>Išlaidų sąrašas</h3>
     <form className="row g-3">
   <div className="col-md p-2">
     <label className="text-xs font-weight-bold text-secondary text-uppercase mb-1 d-md-flex justify-content-md-start" >Filtruoti pagal</label>

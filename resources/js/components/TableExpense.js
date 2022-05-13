@@ -2,7 +2,6 @@ import axios from 'axios';
 import React, { Component } from 'react'
 import ExpenseTableFilter from './ExpenseTableFilter';
 
-
 class TableExpense extends Component {
 
     constructor(props) {
