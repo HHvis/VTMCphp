@@ -54,12 +54,13 @@ class IncomeController extends Controller
 
     public function store(Request $request)
     {
+
         $incomeTitle = $request->get('title');
         $incomeAmount = $request->get('amount');
         $incomeCategory = $request->get('category');
 
         Income::create([
-           'title'   =>  $incomeTitle,
+           'title' =>  $incomeTitle,
            'amount'     =>  $incomeAmount,
            'category'     =>  $incomeCategory
         ]);
@@ -67,7 +68,7 @@ class IncomeController extends Controller
             return response()->json([
               'title'   =>  $incomeTitle,
               'amount'     =>  $incomeAmount,
-              'category'     =>  $incomeCategory
-            ]);       
-    }
+              'category'     =>  $incomeCategory,
+            ]); 
+        }
 }

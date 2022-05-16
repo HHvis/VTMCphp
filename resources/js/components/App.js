@@ -70,7 +70,7 @@ function App() {
     </div>
 
     <div className="row">
-    <div className="col-xl-6 col-lg-7">
+    <div className="col-xl-6 col-lg-12">
         <div className="card border-left-success shadow mb-4">
             <div
                 className="card-header py-3 d-flex flex-row align-items-center justify-content-between">

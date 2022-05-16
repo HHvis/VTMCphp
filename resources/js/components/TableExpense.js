@@ -58,7 +58,7 @@ class TableExpense extends Component {
                 <td></td>
                 <td></td>
                 <td><b>Visa išlaidų suma</b></td>
-                <td><b className="number-xl">{this.state.sumExpense} Eur</b></td>
+                <td><b className="number">{this.state.sumExpense.toFixed(2)} Eur</b></td>
             </tr>
       </tbody>
     </table>

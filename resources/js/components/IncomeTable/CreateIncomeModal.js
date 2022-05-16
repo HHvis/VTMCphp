@@ -1,15 +1,18 @@
 import axios from 'axios';
 import React, { Component } from 'react'
 
+
+
 class CreateIncomeModal extends Component {
 
     constructor(props) {
         super(props);
 
         this.state ={
-            title:null,
-            amount:null,
-            category:null
+            title:'',
+            amount:'',
+            category:'',
+            errors: {}
           }
     }
 
@@ -37,52 +40,94 @@ class CreateIncomeModal extends Component {
         }).then(()=>{
             location.reload();
         })
+      }
 
+      formValidation = () =>{
+        const {title,amount,category} = this.state;
+        let isValid = true;
+        const errors = {};
+        if(title.trim().length < 1){
+          errors.titleLenght = "Pavadinimas privalo turėti 1-20 simbolių";
+          isValid = false;
+        }
+        else if(title.trim().length > 20){
+          errors.titleLenght = "Pavadinimas privalo turėti 1-20 simbolių";
+          isValid = false;
+        }
+        else if(amount.trim().length > 5){
+          errors.amountLenght = "Sumažinkite sumą. Suma negali viršyti penkiaženklės sumos";
+          isValid = false;
+        }
+        else if(amount.trim().length < 1){
+          errors.amountLenght = "Įveskite sumą";
+          isValid = false;
+        }
+        else if(category.trim().length < 2){
+          errors.amountLenght = "Pamiršote pasirinkti kategoriją.";
+          isValid = false;
+        }
+        this.setState({errors});
+        return isValid;
+      }
+
+      onSubmit = (e) => {
+        e.preventDefault();
+        const isValid = this.formValidation();
+        if(isValid){
+          this.setState({title : "", amount : "", category : ""});
+        }
       }
 
     render(){
+      const {title, amount, errors} = this.state;
         return (
-            <>
-                <button className='btn btn-success style={{width: "4rem"} offset-md-6 '
-                    data-toggle="modal" data-target="#CreateIncomeModal"
-                    > Pridėti naują įrašą  
-                </button>
-                <div className="modal fade" id="CreateIncomeModal" aria-labelledby="exampleModalCenterTitle" tabIndex="-1" role="dialog" aria-hidden="true">
-                  <div className="modal-dialog modal-dialog-centered" role="document">
-                    <div className="modal-content">
-                      <div className="modal-header">
-                      <h5 className="modal-title" id="exampleModalLongTitle">Pridėti naują įrašą </h5>
-                      </div>
-                      <div className="modal-body">
-                        <form className="form needs-validation">
-                        <div className='form-group col-md-6'>
-                             <input className="form-control " type="text"
-                            id="title" placeholder='Pavadinimas' onChange={this.inputIncomeTitle} required/>      
-                          </div>  
-                          <div className='form-group col-md-6'>
-                             <input className="form-control " type="number" min="1"
-                             id="amount" placeholder='Suma'
-                             onChange={this.inputIncomeAmount} required/>
-                          </div>
-                          <div className='form-group col-md-6'>
-                                <select className="form-control col-md-5" id="category" onChange={this.inputIncomeCategory} required>
-                                  <option selected>Kategorija</option>
-                                  <option value="Atlyginimas">Atlyginimas</option>
-                                  <option value="Palukanos">Palukanos</option>
-                                  <option value="Dovanos">Dovanos</option>
-                                </select>
-                          </div>
-                        </form>
-                      </div>
-                      <div className="modal-footer">
-                        <input type="button" className="btn btn-secondary btn-sm"
-                         value="Išsaugoti" onClick={this.storeIncomeData} required/>
-                    <button type="button" className="btn btn-light close btn-sm"  data-dismiss="modal">Uždaryti</button>
-                  </div>
-                </div>
-              </div>
+<>
+<button className='btn btn-success style={width: "4rem"} offset-md-6 '
+  data-toggle="modal" data-target="#CreateIncomeModal"> Pridėti įrašą  
+</button>
+<div className="modal fade" id="CreateIncomeModal" aria-labelledby="exampleModalCenterTitle" tabIndex="-1" role="dialog" aria-hidden="true">
+  <div className="modal-dialog modal-dialog-centered" role="document">
+    <div className="modal-content">
+      <div className="modal-header">
+        <h5 className="modal-title" id="exampleModalLongTitle">Pridėti naują įrašą </h5>
+      </div>
+        <div className="modal-body">
+          <form className="form" onSubmit={this.onSubmit}>
+            <div className='form-group col-md-6'>
+              <input className="form-control " type="text" value={title}
+              id="title" placeholder='Pavadinimas' onChange={this.inputIncomeTitle}/>
+            </div>  
+              <div className='form-group col-md-6'>
+                <input className="form-control" 
+                value={amount} min="0" type="number"
+                placeholder='Suma'
+                onChange={this.inputIncomeAmount}/>
             </div>
-            </>
+            <div className='form-group col-md-6'>
+              <select className="form-control col-md-5" id="category" onChange={this.inputIncomeCategory} required>
+                <option selected disabled>Kategorija </option>
+                <option value="Atlyginimas">Atlyginimas</option>
+                <option value="Palukanos">Palukanos</option>
+                <option value="Dovanos">Dovanos</option>
+              </select>
+            </div>
+            {Object.keys(errors).map((key)=>{
+                return <div key={key}> {errors[key]} </div>
+                })}
+      <div className="modal-footer">
+        <button type="submit" className="btn btn-secondary btn-sm"
+          onClick={this.storeIncomeData}>Išsaugoti
+        </button>
+        <button type="button" className="btn btn-light close btn-sm"  
+          data-dismiss="modal">Uždaryti
+        </button>
+      </div>
+      </form>
+        </div>
+    </div>
+  </div>
+</div>
+</>
         )
     }
 }

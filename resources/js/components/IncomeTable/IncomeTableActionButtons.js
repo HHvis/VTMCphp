@@ -39,7 +39,7 @@ class IncomeTableActionButtons extends Component {
                     data-bs-target={"#UpdateIncomeModal"+this.props.eachRowId}
                     onClick={() => {this.getIncomeDetails(this.props.eachRowId)} }
                     >
-                Pakeisti</button>
+                Keisti</button>
                 <UpdateIncomeModal modalIncomeId={this.props.eachRowId} incomeData={this.state}/>
 
                 <button type="button" 
@@ -47,7 +47,7 @@ class IncomeTableActionButtons extends Component {
                     data-bs-toggle="modal" 
                     data-bs-target={"#DeleteIncomeModal"+this.props.eachRowId}
                     onClick={() => {this.getIncomeDetails(this.props.eachRowId)} }
-                    >Ištrinti</button>
+                    >Trinti</button>
                 <DeleteIncomeModal modalIncomeId={this.props.eachRowId} incomeData={this.state}/>    
             </div>
         )

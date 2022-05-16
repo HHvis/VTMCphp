@@ -19,10 +19,10 @@ class DeleteExpenseModal extends Component {
               <div className="modal-dialog modal-dialog-centered" role="document">
                 <div className="modal-content">
                   <div className="modal-header">
-                    <h5 className="modal-title" id="exampleModalLongTitle">Ištrinti įrašą</h5>
+                    <h5 className="modal-title" id="exampleModalLongTitle"></h5>
                   </div>
                   <div className="modal-body text-center">
-                       Ar norite ištrinti šį įrašą?   
+                      Ar norite ištrinti šį įrašą?   
                   <div className="modal-footer">
                     <button type="button" className="btn btn-success btn-sm" data-bs-danger="modal"
                         onClick={()=>{this.deleteExpenseData(this.props.modalExpenseId)}}
