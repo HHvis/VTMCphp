@@ -93,7 +93,7 @@ function App() {
                 <h6 className="text-xs font-weight-bold text-secondary text-uppercase mb-1">Grafikas</h6>
             </div>
             <div className="card-body">
-                <div className="chart-pie pt-4 pb-2">
+                <div className="pt-4 pb-2">
                 </div>
             </div>
         </div>

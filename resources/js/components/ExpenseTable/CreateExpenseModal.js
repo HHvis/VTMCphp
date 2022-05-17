@@ -45,23 +45,23 @@ class CreateExpenseModal extends Component {
         let isValid = true;
         const errors = {};
         if(title.trim().length < 1){
-          errors.titleLenght = "Pavadinimas privalo turėti 1-20 simbolių";
+          errors.titleLength = "Pavadinimas privalo turėti 1-20 simbolių";
           isValid = false;
         }
         else if(title.trim().length > 20){
-          errors.titleLenght = "Pavadinimas privalo turėti 1-20 simbolių";
+          errors.titleLength = "Pavadinimas negali būti ilgesnis nei 20 simbolių";
           isValid = false;
         }
         else if(amount.trim().length > 5){
-          errors.amountLenght = "Sumažinkite sumą. Suma negali viršyti penkiaženklės sumos";
+          errors.amountLength = "Sumažinkite sumą. Suma negali viršyti penkiaženklės sumos";
           isValid = false;
         }
         else if(amount.trim().length < 1){
-          errors.amountLenght = "Įveskite sumą";
+          errors.amountLength = "Įveskite sumą";
           isValid = false;
         }
         else if(category.trim().length < 2){
-          errors.amountLenght = "Pamiršote pasirinkti kategoriją.";
+          errors.amountLength = "Pamiršote pasirinkti kategoriją.";
           isValid = false;
         }
         this.setState({errors});
@@ -78,37 +78,31 @@ class CreateExpenseModal extends Component {
 
       
 
-    render(){
-      const {title, amount, errors} = this.state;
-
-        return (
-            <>
-                <button className='btn btn-success style={{width: "4rem"} offset-md-6'
-                    data-toggle="modal" data-target="#CreateExpenseModal"
-                    >Pridėti įrašą  
-                </button>
-                <div className="modal fade" id="CreateExpenseModal" aria-labelledby="exampleModalCenterTitle" tabIndex="-1" role="dialog" aria-hidden="true">
-                  <div className="modal-dialog modal-dialog-centered" role="document">
-                    <div className="modal-content">
-                      <div className="modal-header">
-                      <h5 className="modal-title" id="exampleModalLongTitle">Pridėti naują įrašą </h5>
+render(){
+  const {title, amount, errors} = this.state;
+    return (
+        <>
+            <button className='btn btn-success style={{width: "4rem"} offset-md-6'
+                data-toggle="modal" data-target="#CreateExpenseModal"
+                >Pridėti įrašą  
+            </button>
+            <div className="modal fade" id="CreateExpenseModal" aria-labelledby="exampleModalCenterTitle" tabIndex="-1" role="dialog" aria-hidden="true">
+              <div className="modal-dialog modal-dialog-centered" role="document">
+                <div className="modal-content">
+                  <div className="modal-header">
+                  <h5 className="modal-title" id="exampleModalLongTitle">Pridėti naują įrašą </h5>
+                  </div>
+                  <div className="modal-body">
+                  <form className="form" onSubmit={this.onSubmit}>
+                    <div className='form-group col-md-6'>
+                        <input className="form-control" type="text" value={title}
+                        id="title" placeholder='Pavadinimas' onChange={this.inputExpenseTitle} required/>      
+                      </div>  
+                      <div className='form-group col-md-6'>
+                          <input className="form-control" min="1" type="number" value={amount}
+                          id="amount" placeholder='Suma'
+                          onChange={this.inputExpenseAmount} required/>
                       </div>
-                      <div className="modal-body">
-
-                        <form className="form needs-validation" onSubmit={this.onSubmit}>
-
-                        <div className='form-group col-md-6'>
-                             <input className="form-control " type="text" value={title}
-                            id="title" placeholder='Pavadinimas' onChange={this.inputExpenseTitle} required/>      
-                          </div>  
-
-
-                          <div className='form-group col-md-6'>
-                             <input className="form-control " type="number" value={amount} min="1"
-                             id="amount" placeholder='Suma'
-                             onChange={this.inputExpenseAmount} required/>
-                          </div>
-
                           <div className='form-group col-md-6'>
                                 <select className="form-control col-md-5" id="category" onChange={this.inputExpenseCategory} required>
                                   <option selected>Kategorija</option>
@@ -120,15 +114,15 @@ class CreateExpenseModal extends Component {
                                 </select>
                           </div>
                           {Object.keys(errors).map((key)=>{
-                return <div key={key}> {errors[key]} </div>
-                })}
+                          return <div className='text-danger' key={key}> {errors[key]} </div>
+                          })}
                           <div className="modal-footer">
                         <button type="submit" className="btn btn-secondary btn-sm"
                         onClick={this.storeExpenseData}>Išsaugoti</button>
                     <button type="button" className="btn btn-light close btn-sm"  data-dismiss="modal">Uždaryti</button>
                   </div>
-                        </form>
-                      </div>
+                  </form>
+                  </div>
                 </div>
               </div>
             </div>

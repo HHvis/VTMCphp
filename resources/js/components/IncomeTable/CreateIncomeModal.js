@@ -47,23 +47,23 @@ class CreateIncomeModal extends Component {
         let isValid = true;
         const errors = {};
         if(title.trim().length < 1){
-          errors.titleLenght = "Pavadinimas privalo turėti 1-20 simbolių";
+          errors.titleLength = "Pavadinimas privalo turėti 1-20 simbolių";
           isValid = false;
         }
         else if(title.trim().length > 20){
-          errors.titleLenght = "Pavadinimas privalo turėti 1-20 simbolių";
+          errors.titleLength = "Pavadinimas negali būti ilgesnis nei 20 simbolių";
           isValid = false;
         }
         else if(amount.trim().length > 5){
-          errors.amountLenght = "Sumažinkite sumą. Suma negali viršyti penkiaženklės sumos";
+          errors.amountLength = "Sumažinkite sumą. Suma negali viršyti penkiaženklės sumos";
           isValid = false;
         }
         else if(amount.trim().length < 1){
-          errors.amountLenght = "Įveskite sumą";
+          errors.amountLength = "Įveskite sumą";
           isValid = false;
         }
         else if(category.trim().length < 2){
-          errors.amountLenght = "Pamiršote pasirinkti kategoriją.";
+          errors.amountLength = "Pamiršote pasirinkti kategoriją.";
           isValid = false;
         }
         this.setState({errors});
@@ -99,7 +99,7 @@ class CreateIncomeModal extends Component {
             </div>  
               <div className='form-group col-md-6'>
                 <input className="form-control" 
-                value={amount} min="0" type="number"
+                value={amount} min="1" type="number"
                 placeholder='Suma'
                 onChange={this.inputIncomeAmount}/>
             </div>
@@ -112,7 +112,7 @@ class CreateIncomeModal extends Component {
               </select>
             </div>
             {Object.keys(errors).map((key)=>{
-                return <div key={key}> {errors[key]} </div>
+                return <div className='text-danger' key={key}> {errors[key]} </div>
                 })}
       <div className="modal-footer">
         <button type="submit" className="btn btn-secondary btn-sm"
