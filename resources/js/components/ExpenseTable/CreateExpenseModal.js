@@ -5,11 +5,10 @@ class CreateExpenseModal extends Component {
 
     constructor(props) {
         super(props);
-
         this.state ={
-            title:null,
-            amount:null,
-            category:null,
+            title:'',
+            amount:'',
+            category:'',
             errors: {}
           }
     }
@@ -38,8 +37,8 @@ class CreateExpenseModal extends Component {
         }).then(()=>{
             location.reload();
         })
-
       }
+
       formValidation = () =>{
         const {title,amount,category} = this.state;
         let isValid = true;
@@ -49,21 +48,26 @@ class CreateExpenseModal extends Component {
           isValid = false;
         }
         else if(title.trim().length > 20){
-          errors.titleLength = "Pavadinimas negali būti ilgesnis nei 20 simbolių";
+          errors.titleTooLong = "Pavadinimas negali būti ilgesnis nei 20 simbolių";
           isValid = false;
         }
-        else if(amount.trim().length > 5){
-          errors.amountLength = "Sumažinkite sumą. Suma negali viršyti penkiaženklės sumos";
+        else if(amount.includes("-")){
+          errors.amountMinus = "Negalima įvesti neigiamo skaičiaus.";
           isValid = false;
         }
         else if(amount.trim().length < 1){
-          errors.amountLength = "Įveskite sumą";
+          errors.amountLength = "Įveskite sumą, skaičių.";
+          isValid = false;
+        }
+        else if(amount.trim().length > 5){
+          errors.amountTooLong = "Sumažinkite sumą. Suma negali viršyti keturženklės sumos";
           isValid = false;
         }
         else if(category.trim().length < 2){
-          errors.amountLength = "Pamiršote pasirinkti kategoriją.";
+          errors.categorySelect = "Pamiršote pasirinkti kategoriją.";
           isValid = false;
-        }
+        } else
+        window.location.reload();
         this.setState({errors});
         return isValid;
       }
@@ -75,11 +79,10 @@ class CreateExpenseModal extends Component {
           this.setState({title : "", amount : "", category : ""});
         }
       }
-
       
 
 render(){
-  const {title, amount, errors} = this.state;
+  let {title, amount, category, errors} = this.state;
     return (
         <>
             <button className='btn btn-success style={{width: "4rem"} offset-md-6'
@@ -93,19 +96,19 @@ render(){
                   <h5 className="modal-title" id="exampleModalLongTitle">Pridėti naują įrašą </h5>
                   </div>
                   <div className="modal-body">
-                  <form className="form" onSubmit={this.onSubmit}>
-                    <div className='form-group col-md-6'>
-                        <input className="form-control" type="text" value={title}
-                        id="title" placeholder='Pavadinimas' onChange={this.inputExpenseTitle} required/>      
-                      </div>  
+                  <form className="form" onSubmit={this.onSubmit}> 
+                      <div className='form-group col-md-6'>
+              <input className="form-control" type="text" value={title}
+              id="title" placeholder='Pavadinimas' onChange={this.inputExpenseTitle} required/>
+            </div>  
                       <div className='form-group col-md-6'>
                           <input className="form-control" min="1" type="number" value={amount}
                           id="amount" placeholder='Suma'
                           onChange={this.inputExpenseAmount} required/>
                       </div>
                           <div className='form-group col-md-6'>
-                                <select className="form-control col-md-5" id="category" onChange={this.inputExpenseCategory} required>
-                                  <option selected>Kategorija</option>
+                                <select className="form-control col-md-5" id="category" value={category} onChange={this.inputExpenseCategory} required>
+                                  <option disabled selected>Kategorija</option>
                                   <option value="Maistui">Maistui</option>
                                   <option value="Drabužiams">Drabužiams</option>
                                   <option value="Vaistams">Vaistams</option>
@@ -117,9 +120,12 @@ render(){
                           return <div className='text-danger' key={key}> {errors[key]} </div>
                           })}
                           <div className="modal-footer">
-                        <button type="submit" className="btn btn-secondary btn-sm"
-                        onClick={this.storeExpenseData}>Išsaugoti</button>
-                    <button type="button" className="btn btn-light close btn-sm"  data-dismiss="modal">Uždaryti</button>
+                          <button type="submit" className="btn btn-secondary btn-sm"
+                            onClick={this.storeExpenseData}>Išsaugoti
+                          </button>
+                    <button type="button" className="btn btn-light close btn-sm"  
+                      data-dismiss="modal">Uždaryti
+                    </button>
                   </div>
                   </form>
                   </div>

@@ -1,13 +1,10 @@
 import axios from 'axios';
 import React, { Component } from 'react'
 
-
-
 class CreateIncomeModal extends Component {
 
     constructor(props) {
         super(props);
-
         this.state ={
             title:'',
             amount:'',
@@ -51,21 +48,26 @@ class CreateIncomeModal extends Component {
           isValid = false;
         }
         else if(title.trim().length > 20){
-          errors.titleLength = "Pavadinimas negali būti ilgesnis nei 20 simbolių";
+          errors.titleTooLong = "Pavadinimas negali būti ilgesnis nei 20 simbolių";
           isValid = false;
         }
-        else if(amount.trim().length > 5){
-          errors.amountLength = "Sumažinkite sumą. Suma negali viršyti penkiaženklės sumos";
+        else if(amount.includes("-")){
+          errors.amountMinus = "Negalima įvesti neigiamo skaičiaus.";
           isValid = false;
         }
         else if(amount.trim().length < 1){
-          errors.amountLength = "Įveskite sumą";
+          errors.amountLength = "Įveskite sumą, skaičių.";
+          isValid = false;
+        }
+        else if(amount.trim().length > 5){
+          errors.amountTooLong = "Sumažinkite sumą. Suma negali viršyti keturženklės sumos";
           isValid = false;
         }
         else if(category.trim().length < 2){
-          errors.amountLength = "Pamiršote pasirinkti kategoriją.";
+          errors.categorySelect = "Pamiršote pasirinkti kategoriją.";
           isValid = false;
-        }
+        } else
+        window.location.reload();
         this.setState({errors});
         return isValid;
       }
@@ -79,7 +81,7 @@ class CreateIncomeModal extends Component {
       }
 
     render(){
-      const {title, amount, errors} = this.state;
+      const {title, amount, category, errors} = this.state;
         return (
 <>
 <button className='btn btn-success style={width: "4rem"} offset-md-6 '
@@ -104,7 +106,7 @@ class CreateIncomeModal extends Component {
                 onChange={this.inputIncomeAmount}/>
             </div>
             <div className='form-group col-md-6'>
-              <select className="form-control col-md-5" id="category" onChange={this.inputIncomeCategory} required>
+              <select className="form-control col-md-5" id="category" value={category} onChange={this.inputIncomeCategory} required>
                 <option selected disabled>Kategorija </option>
                 <option value="Atlyginimas">Atlyginimas</option>
                 <option value="Palukanos">Palukanos</option>

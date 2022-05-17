@@ -82,25 +82,30 @@ class UpdateIncomeModal extends Component {
       let isValid = true;
       const errors = {};
       if(title.trim().length < 1){
-        errors.titleLenght = "Pavadinimas privalo turėti 1-20 simbolių";
+        errors.titleLength = "Pavadinimas privalo turėti 1-20 simbolių";
         isValid = false;
       }
       else if(title.trim().length > 20){
-        errors.titleLenght = "Pavadinimas privalo turėti 1-20 simbolių";
+        errors.titleTooLong = "Pavadinimas negali būti ilgesnis nei 20 simbolių";
         isValid = false;
       }
-      else if(amount.trim().length > 5){
-        errors.amountLenght = "Suma negali būti didesnė nei 6 skaičiai.";
+      else if(amount.includes("-")){
+        errors.amountMinus = "Negalima įvesti neigiamo skaičiaus.";
         isValid = false;
       }
       else if(amount.trim().length < 1){
-        errors.amountLenght = "Įveskite sumą";
+        errors.amountLength = "Įveskite sumą, skaičių.";
+        isValid = false;
+      }
+      else if(amount.trim().length > 5){
+        errors.amountTooLong = "Sumažinkite sumą. Suma negali viršyti keturženklės sumos";
         isValid = false;
       }
       else if(category.trim().length < 2){
-        errors.amountLenght = "Pamiršote pasirinkti kategoriją.";
+        errors.categorySelect = "Pamiršote pasirinkti kategoriją.";
         isValid = false;
-      }
+      } else
+      window.location.reload();
       this.setState({errors});
       return isValid;
     }
@@ -113,10 +118,8 @@ class UpdateIncomeModal extends Component {
       }
     }
 
-
-
     render(){
-      const {title, amount, errors} = this.state;
+      const {title, amount, category, errors} = this.state;
         return (
             <div className="modal fade" id={"UpdateIncomeModal"+this.props.modalIncomeId} aria-labelledby="updateIncomeModal" tabIndex="-1" role="dialog" aria-hidden="true">
               <div className="modal-dialog modal-dialog-centered" role="document">
@@ -134,20 +137,20 @@ class UpdateIncomeModal extends Component {
                       </div>  
                       <div className='form-group col-md-6'>
                              <input className="form-control " type="number" min="0"
-                          id="amount" value={amount ?? ""}
+                          id="amount" value={amount}
                           onChange={this.inputIncomeAmount}/>
                       </div>
                       <div className='form-group col-md-6'>
-                                <select className="form-control col-md-5" id="category" onChange={this.inputIncomeCategory} required>
-                                  <option selected>Kategorija</option>
+                                <select className="form-control col-md-5" id="category" value={category} onChange={this.inputIncomeCategory} required>
+                                  <option disabled selected>Kategorija</option>
                                   <option value="Atlyginimas">Atlyginimas</option>
                                   <option value="Palukanos">Palukanos</option>
                                   <option value="Dovanos">Dovanos</option>
                                 </select>
                           </div>
-                    {Object.keys(errors).map((key)=>{
-                return <div key={key}> {errors[key]} </div>
-                })}
+                          {Object.keys(errors).map((key)=>{
+                          return <div className='text-danger' key={key}> {errors[key]} </div>
+                          })}
                   <div className="modal-footer">
                     <input type="submit" className='btn btn-secondary btn-sm'
                            value="Pakeisti" onClick={this.updateIncomeData}/>
