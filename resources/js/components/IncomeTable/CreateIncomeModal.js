@@ -81,7 +81,7 @@ class CreateIncomeModal extends Component {
       }
 
     render(){
-      const {title, amount, category, errors} = this.state;
+      const {title, amount, errors} = this.state;
         return (
 <>
 <button className='btn btn-success style={width: "4rem"} offset-md-6 '
@@ -106,7 +106,7 @@ class CreateIncomeModal extends Component {
                 onChange={this.inputIncomeAmount}/>
             </div>
             <div className='form-group col-md-6'>
-              <select className="form-control col-md-5" id="category" value={category} onChange={this.inputIncomeCategory} required>
+              <select className="form-control col-md-5" id="category" onChange={this.inputIncomeCategory} required>
                 <option selected disabled>Kategorija </option>
                 <option value="Atlyginimas">Atlyginimas</option>
                 <option value="Palukanos">Palukanos</option>

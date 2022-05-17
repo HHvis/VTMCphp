@@ -82,7 +82,7 @@ class CreateExpenseModal extends Component {
       
 
 render(){
-  let {title, amount, category, errors} = this.state;
+  let {title, amount, errors} = this.state;
     return (
         <>
             <button className='btn btn-success style={{width: "4rem"} offset-md-6'
@@ -102,12 +102,12 @@ render(){
               id="title" placeholder='Pavadinimas' onChange={this.inputExpenseTitle} required/>
             </div>  
                       <div className='form-group col-md-6'>
-                          <input className="form-control" min="1" type="number" value={amount}
+                          <input className="form-control" type="number" value={amount}
                           id="amount" placeholder='Suma'
                           onChange={this.inputExpenseAmount} required/>
                       </div>
                           <div className='form-group col-md-6'>
-                                <select className="form-control col-md-5" id="category" value={category} onChange={this.inputExpenseCategory} required>
+                                <select className="form-control col-md-5" id="category" onChange={this.inputExpenseCategory} required>
                                   <option disabled selected>Kategorija</option>
                                   <option value="Maistui">Maistui</option>
                                   <option value="Drabužiams">Drabužiams</option>
