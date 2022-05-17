@@ -59,7 +59,7 @@ class CreateIncomeModal extends Component {
           errors.amountLength = "Įveskite sumą, skaičių.";
           isValid = false;
         }
-        else if(amount.trim().length > 5){
+        else if(amount.trim().length > 4){
           errors.amountTooLong = "Sumažinkite sumą. Suma negali viršyti keturženklės sumos";
           isValid = false;
         }

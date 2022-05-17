@@ -20,11 +20,6 @@ function Table() {
     <label htmlFor="exampleDataList" className="visually-hidden">Kategorija</label>
     <input className="form-control" list="datalistOptions" id="exampleDataList" placeholder="Kategorija"/>
     <datalist id="datalistOptions">
-    <option value="Maistui"/>
-    <option value="Drabužiams"/>
-    <option value="Vaistams"/>
-    <option value="Kurui"/>
-    <option value="Auto taisymui"/>
     </datalist>
   </div>
   <div className="col-md p-2">
