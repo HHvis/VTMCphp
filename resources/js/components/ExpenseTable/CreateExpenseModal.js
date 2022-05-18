@@ -29,16 +29,6 @@ class CreateExpenseModal extends Component {
         });
       }
       
-      storeExpenseData = () => {
-        axios.post('store/expense/data', {
-            title:this.state.title,
-            amount:this.state.amount,
-            category:this.state.category,
-        }).then(()=>{
-            location.reload();
-        })
-      }
-
       formValidation = () =>{
         const {title,amount,category} = this.state;
         let isValid = true;
@@ -51,7 +41,7 @@ class CreateExpenseModal extends Component {
           errors.titleTooLong = "Pavadinimas negali būti ilgesnis nei 20 simbolių";
           isValid = false;
         }
-        else if(amount.includes("-")){
+        else if(amount.valueOf()<0.01){
           errors.amountMinus = "Negalima įvesti neigiamo skaičiaus.";
           isValid = false;
         }
@@ -59,7 +49,7 @@ class CreateExpenseModal extends Component {
           errors.amountLength = "Įveskite sumą, skaičių.";
           isValid = false;
         }
-        else if(amount.trim().length > 5){
+        else if(amount.trim().length > 4){
           errors.amountTooLong = "Sumažinkite sumą. Suma negali viršyti keturženklės sumos";
           isValid = false;
         }
@@ -77,62 +67,68 @@ class CreateExpenseModal extends Component {
         const isValid = this.formValidation();
         if(isValid){
           this.setState({title : "", amount : "", category : ""});
-        }
+          axios.post('store/income/data', {
+            title:this.state.title,
+            amount:this.state.amount,
+            category:this.state.category,
+        }).then(()=>{
+            location.reload();
+        })
       }
+     }
       
-
-render(){
-  let {title, amount, errors} = this.state;
-    return (
-        <>
-            <button className='btn btn-success style={{width: "4rem"} offset-md-6'
-                data-toggle="modal" data-target="#CreateExpenseModal"
-                >Pridėti įrašą  
-            </button>
-            <div className="modal fade" id="CreateExpenseModal" aria-labelledby="exampleModalCenterTitle" tabIndex="-1" role="dialog" aria-hidden="true">
-              <div className="modal-dialog modal-dialog-centered" role="document">
-                <div className="modal-content">
-                  <div className="modal-header">
-                  <h5 className="modal-title" id="exampleModalLongTitle">Pridėti naują įrašą </h5>
-                  </div>
-                  <div className="modal-body">
-                  <form className="form" onSubmit={this.onSubmit}> 
-                      <div className='form-group col-md-6'>
-              <input className="form-control" type="text" value={title}
-              id="title" placeholder='Pavadinimas' onChange={this.inputExpenseTitle} required/>
+     render(){
+      const {title, amount, errors} = this.state;
+        return (
+<>
+<button className='btn btn-success style={width: "4rem"} offset-md-6 '
+  data-toggle="modal" data-target="#CreateExpenseModal"> Pridėti įrašą  
+</button>
+<div className="modal fade" id="CreateExpenseModal" aria-labelledby="exampleModalCenterTitle" tabIndex="-1" role="dialog" aria-hidden="true">
+  <div className="modal-dialog modal-dialog-centered" role="document">
+    <div className="modal-content">
+      <div className="modal-header">
+        <h5 className="modal-title" id="exampleModalLongTitle">Pridėti naują įrašą </h5>
+      </div>
+        <div className="modal-body">
+          <form className="form" onSubmit={this.onSubmit}>
+            <div className='form-group col-md-6'>
+              <input className="form-control " type="text" value={title}
+              id="title" placeholder='Pavadinimas' onChange={this.inputExpenseTitle}/>
             </div>  
-                      <div className='form-group col-md-6'>
-                          <input className="form-control" type="number" value={amount}
-                          id="amount" placeholder='Suma'
-                          onChange={this.inputExpenseAmount} required/>
-                      </div>
-                          <div className='form-group col-md-6'>
-                                <select className="form-control col-md-5" id="category" onChange={this.inputExpenseCategory} required>
-                                  <option disabled selected>Kategorija</option>
-                                  <option value="Maistui">Maistui</option>
-                                  <option value="Drabužiams">Drabužiams</option>
-                                  <option value="Vaistams">Vaistams</option>
-                                  <option value="Kurui">Kurui</option>
-                                  <option value="Auto taisymui">Auto taisymui</option>
-                                </select>
-                          </div>
-                          {Object.keys(errors).map((key)=>{
-                          return <div className='text-danger' key={key}> {errors[key]} </div>
-                          })}
-                          <div className="modal-footer">
-                          <button type="submit" className="btn btn-secondary btn-sm"
-                            onClick={this.storeExpenseData}>Išsaugoti
-                          </button>
-                    <button type="button" className="btn btn-light close btn-sm"  
-                      data-dismiss="modal">Uždaryti
-                    </button>
-                  </div>
-                  </form>
-                  </div>
-                </div>
-              </div>
+              <div className='form-group col-md-6'>
+                <input className="form-control" 
+                value={amount} type="number"
+                placeholder='Suma'
+                onChange={this.inputExpenseAmount}/>
             </div>
-            </>
+            <div className='form-group col-md-6'>
+              <select className="form-control col-md-5" id="category" onChange={this.inputExpenseCategory} required>
+                  <option disabled selected>Kategorija</option>
+                  <option value="Maistui">Maistui</option>
+                  <option value="Drabužiams">Drabužiams</option>
+                  <option value="Vaistams">Vaistams</option>
+                  <option value="Kurui">Kurui</option>
+                  <option value="Auto taisymui">Auto taisymui</option>
+              </select>
+            </div>
+            {Object.keys(errors).map((key)=>{
+                return <div className='text-danger' key={key}> {errors[key]} </div>
+                })}
+      <div className="modal-footer">
+        <button type="submit" className="btn btn-secondary btn-sm"
+          >Išsaugoti
+        </button>
+        <button type="button" className="btn btn-light close btn-sm"  
+          data-dismiss="modal">Uždaryti
+        </button>
+      </div>
+      </form>
+        </div>
+    </div>
+  </div>
+</div>
+</>
         )
     }
 }

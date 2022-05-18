@@ -10,7 +10,8 @@ class ExpenseLimit extends Component {
         this.state = {
             ExpenseLimitSum:20,
             ExpenseLimitProgress:null,
-            expenses:[]
+            expenses:[],
+            
         }
     }
     componentDidMount(){
