@@ -31,25 +31,26 @@ class ExpenseTableActionButtons extends Component {
 
     render(){
         return (
-            <div className="btn-group btn-group-sm" role="group">
+            <div >
+            <button type="button" 
+                style={{width: "4rem" , marginRight:"2px"}}
+                className="btn btn-warning btn-sm btn-secondary" 
+                data-bs-toggle="modal" 
+                data-bs-target={"#UpdateExpenseModal"+this.props.eachRowId}
+                onClick={() => {this.getExpenseDetails(this.props.eachRowId)} }
+                >
+            Pakeisti</button>
+            <UpdateExpenseModal modalExpenseId={this.props.eachRowId} expenseData={this.state}/>
 
-                <button type="button" 
-                    className="btn btn-warning btn-sm" 
-                    data-bs-toggle="modal" 
-                    data-bs-target={"#UpdateExpenseModal"+this.props.eachRowId}
-                    onClick={() => {this.getExpenseDetails(this.props.eachRowId)} }
-                    >
-                Keisti</button>
-                <UpdateExpenseModal modalExpenseId={this.props.eachRowId} expenseData={this.state}/>
-
-                <button type="button" 
-                    className="btn btn-danger btn-sm" 
-                    data-bs-toggle="modal" 
-                    data-bs-target={"#DeleteExpenseModal"+this.props.eachRowId}
-                    onClick={() => {this.getExpenseDetails(this.props.eachRowId)} }
-                    >Trinti</button>
-                <DeleteExpenseModal modalExpenseId={this.props.eachRowId} expenseData={this.state}/>    
-            </div>
+            <button type="button" 
+                style={{width: "4rem"}}
+                className="btn btn-danger btn-sm btn-secondary" 
+                data-bs-toggle="modal" 
+                data-bs-target={"#DeleteExpenseModal"+this.props.eachRowId}
+                onClick={() => {this.getExpenseDetails(this.props.eachRowId)} }
+                >Ištrinti</button>
+            <DeleteExpenseModal modalExpenseId={this.props.eachRowId} expenseData={this.state}/>    
+        </div>
         )
     }
 }

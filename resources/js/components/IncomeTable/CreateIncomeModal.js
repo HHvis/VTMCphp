@@ -29,15 +29,6 @@ class CreateIncomeModal extends Component {
         });
       }
       
-      storeIncomeData = () => {
-        axios.post('store/income/data', {
-            title:this.state.title,
-            amount:this.state.amount,
-            category:this.state.category,
-        }).then(()=>{
-            location.reload();
-        })
-      }
 
       formValidation = () =>{
         const {title,amount,category} = this.state;
@@ -51,7 +42,7 @@ class CreateIncomeModal extends Component {
           errors.titleTooLong = "Pavadinimas negali būti ilgesnis nei 20 simbolių";
           isValid = false;
         }
-        else if(amount.includes("-")){
+        else if(amount.valueOf()<0.01){
           errors.amountMinus = "Negalima įvesti neigiamo skaičiaus.";
           isValid = false;
         }
@@ -77,8 +68,16 @@ class CreateIncomeModal extends Component {
         const isValid = this.formValidation();
         if(isValid){
           this.setState({title : "", amount : "", category : ""});
-        }
+          axios.post('store/income/data', {
+            title:this.state.title,
+            amount:this.state.amount,
+            category:this.state.category,
+        }).then(()=>{
+            location.reload();
+        })
       }
+     }
+      
 
     render(){
       const {title, amount, errors} = this.state;
@@ -101,7 +100,7 @@ class CreateIncomeModal extends Component {
             </div>  
               <div className='form-group col-md-6'>
                 <input className="form-control" 
-                value={amount} min="1" type="number"
+                value={amount} type="number"
                 placeholder='Suma'
                 onChange={this.inputIncomeAmount}/>
             </div>
@@ -118,7 +117,7 @@ class CreateIncomeModal extends Component {
                 })}
       <div className="modal-footer">
         <button type="submit" className="btn btn-secondary btn-sm"
-          onClick={this.storeIncomeData}>Išsaugoti
+          >Išsaugoti
         </button>
         <button type="button" className="btn btn-light close btn-sm"  
           data-dismiss="modal">Uždaryti

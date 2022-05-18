@@ -37,8 +37,8 @@ class Expense extends Component {
               <th scope="col" width="10%" >Data</th>
               <th scope="col" width="25%">Pavadinimas</th>
               <th scope="col" width="5%">Suma</th>
-              <th scope="col" width="25%">Kategorija</th>
-              <th scope="col" width="25%">Veiksmai</th>
+              <th scope="col" width="22%">Kategorija</th>
+              <th scope="col" width="28%">Veiksmai</th>
             </tr>
           </thead>
           <tbody>

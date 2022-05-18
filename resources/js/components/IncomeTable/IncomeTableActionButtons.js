@@ -31,25 +31,26 @@ class IncomeTableActionButtons extends Component {
 
     render(){
         return (
-            <div className="btn-group btn-group-sm" role="group">
+            <div >
+            <button type="button" 
+                style={{width: "4rem" , marginRight:"2px"}}
+                className="btn btn-warning btn-sm btn-secondary" 
+                data-bs-toggle="modal" 
+                data-bs-target={"#UpdateIncomeModal"+this.props.eachRowId}
+                onClick={() => {this.getIncomeDetails(this.props.eachRowId)} }
+                >
+            Pakeisti</button>
+            <UpdateIncomeModal modalIncomeId={this.props.eachRowId} incomeData={this.state}/>
 
-                <button type="button" 
-                    className="btn btn-warning btn-sm" 
-                    data-bs-toggle="modal" 
-                    data-bs-target={"#UpdateIncomeModal"+this.props.eachRowId}
-                    onClick={() => {this.getIncomeDetails(this.props.eachRowId)} }
-                    >
-                Keisti</button>
-                <UpdateIncomeModal modalIncomeId={this.props.eachRowId} incomeData={this.state}/>
-
-                <button type="button" 
-                    className="btn btn-danger btn-sm" 
-                    data-bs-toggle="modal" 
-                    data-bs-target={"#DeleteIncomeModal"+this.props.eachRowId}
-                    onClick={() => {this.getIncomeDetails(this.props.eachRowId)} }
-                    >Trinti</button>
-                <DeleteIncomeModal modalIncomeId={this.props.eachRowId} incomeData={this.state}/>    
-            </div>
+            <button type="button" 
+                style={{width: "4rem"}}
+                className="btn btn-danger btn-sm btn-secondary" 
+                data-bs-toggle="modal" 
+                data-bs-target={"#DeleteIncomeModal"+this.props.eachRowId}
+                onClick={() => {this.getIncomeDetails(this.props.eachRowId)} }
+                >Ištrinti</button>
+            <DeleteIncomeModal modalIncomeId={this.props.eachRowId} incomeData={this.state}/>    
+        </div>
         )
     }
 }
