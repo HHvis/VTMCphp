@@ -67,7 +67,7 @@ class CreateExpenseModal extends Component {
         const isValid = this.formValidation();
         if(isValid){
           this.setState({title : "", amount : "", category : ""});
-          axios.post('store/income/data', {
+          axios.post('store/expense/data', {
             title:this.state.title,
             amount:this.state.amount,
             category:this.state.category,
