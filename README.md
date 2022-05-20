@@ -38,5 +38,5 @@ php artisan serve
 php artisan migrate
 php artisan db:seed --class=VoyagerDatabaseSeeder
 
-Admin paskyro sukurimas
+Admin paskyros sukūrimas
 php artisan voyager:admin admin@admin.lt --create
