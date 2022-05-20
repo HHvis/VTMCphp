@@ -40,3 +40,5 @@ php artisan db:seed --class=VoyagerDatabaseSeeder
 
 Admin paskyros sukūrimas
 php artisan voyager:admin admin@admin.lt --create
+
+Prisijungimas per http://localhost:8000/admin
