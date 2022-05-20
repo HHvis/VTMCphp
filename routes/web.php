@@ -41,3 +41,8 @@ Route::get('/get/expenses', [App\Http\Controllers\IncomeExpenseController::class
 
 Route::post('/store/limit/data', [LimitController::class, 'storeLimits']);
 Route::get('/get/limits', [LimitController::class, 'getLimits']);
+
+
+Route::group(['prefix' => 'admin'], function () {
+    Voyager::routes();
+});

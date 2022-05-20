@@ -33,12 +33,3 @@ php artisan migrate:fresh --seed
 ```
 php artisan serve
 ```
-7. Projekto administravimo skiltis
-```
-php artisan migrate
-php artisan db:seed --class=VoyagerDatabaseSeeder
-
-Admin paskyros sukūrimas
-php artisan voyager:admin admin@admin.lt --create
-
-Prisijungimas per http://localhost:8000/admin
