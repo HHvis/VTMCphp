@@ -51,7 +51,7 @@ return [
             'plural'   => 'Roles',
         ],
         'user'     => [
-            'singular' => 'Vartotojas',
+            'singular' => 'Vartotoją',
             'plural'   => 'Vartotojai',
         ],
     ],

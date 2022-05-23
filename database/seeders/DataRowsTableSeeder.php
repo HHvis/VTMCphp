@@ -59,6 +59,7 @@ class DataRowsTableSeeder extends Seeder
                 'add'          => 1,
                 'delete'       => 1,
                 'order'        => 3,
+                'details'      => json_decode('{"validation":{"rule":"unique:users,email","messages":{"unique":"Tokie duomenys jau egzistuoja!"}}}'),
             ])->save();
         }
 
@@ -122,20 +123,35 @@ class DataRowsTableSeeder extends Seeder
             ])->save();
         }
 
-        // $dataRow = $this->dataRow($userDataType, 'avatar');
-        // if (!$dataRow->exists) {
-        //     $dataRow->fill([
-        //         'type'         => 'image',
-        //         'display_name' => __('voyager::seeders.data_rows.avatar'),
-        //         'required'     => 0,
-        //         'browse'       => 0,
-        //         'read'         => 0,
-        //         'edit'         => 0,
-        //         'add'          => 0,
-        //         'delete'       => 0,
-        //         'order'        => 8,
-        //     ])->save();
-        // }
+        $dataRow = $this->dataRow($userDataType, 'avatar');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'image',
+                'display_name' => __('voyager::seeders.data_rows.avatar'),
+                'required'     => 0,
+                'browse'       => 0,
+                'read'         => 0,
+                'edit'         => 0,
+                'add'          => 0,
+                'delete'       => 0,
+                'order'        => 8,
+            ])->save();
+        }
+
+        $dataRow = $this->dataRow($userDataType, 'email_verified_at');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'text',
+                'display_name' => __('voyager::seeders.data_rows.email_verified_at'),
+                'required'     => 0,
+                'browse'       => 0,
+                'read'         => 0,
+                'edit'         => 0,
+                'add'          => 0,
+                'delete'       => 0,
+                'order'        => 15,
+            ])->save();
+        }
 
         $dataRow = $this->dataRow($userDataType, 'user_belongsto_role_relationship');
         if (!$dataRow->exists) {
