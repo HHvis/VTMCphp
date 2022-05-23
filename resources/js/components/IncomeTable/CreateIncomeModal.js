@@ -57,8 +57,8 @@ class CreateIncomeModal extends Component {
           isValid = false;
         }
         else if (amount.includes('.')) {
-         if(amount.split('.')[1].length>4 ||
-           amount.split('.')[0].length>2){
+         if(amount.split('.')[0].length>4 ||
+           amount.split('.')[1].length>2){
           errors.amountTooLong = "Sumažinkite sumą. Suma negali viršyti keturženklės sumos ir dviejų skaičių po kalbelio";
           isValid = false;
           }else {
