@@ -54,10 +54,23 @@ class ExpenseLimits extends Component {
           errors.amountLength = "Įveskite sumą, skaičių.";
           isValid = false;
         }
-        else if(amount.trim().length > 4){
-          errors.amountTooLong = "Sumažinkite sumą. Suma negali viršyti keturženklės sumos";
-          isValid = false;
-        }
+        else if (amount.includes('.')) {
+          if(amount.split('.')[0].length>4 ||
+           amount.split('.')[1].length>2){
+           errors.amountTooLong = "Sumažinkite sumą. Suma negali viršyti keturženklės sumos ir dviejų skaičių po kalbelio";
+           isValid = false;
+           }else {
+             isValid = true;
+           }   
+         }
+         else if (!amount.includes('.')) {
+           if(amount.trim().length>4){
+            errors.amountTooLong = "Sumažinkite sumą. Suma negali viršyti keturženklės sumos ir dviejų skaičių po kalbelio";
+            isValid = false;
+             }else {
+              isValid = true;
+            }  
+          }
         else if(expnese_id.valueOf() <  1){
           errors.expnese_idSelect = "Pamiršote pasirinkti kategoriją.";
           isValid = false;

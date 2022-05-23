@@ -62,22 +62,8 @@ class UpdateIncomeModal extends Component {
       return incomeUpdate;
     }
 
-    updateIncomeData =() => { 
-      axios.post('update/income/data',{
-        id:this.props.modalIncomeId,
-        title: this.state.title,
-        amount: this.state.amount,
-        category: this.state.category,
-      }).then(()=> {
-        // toast.success(<div class="alert alert-success" role="alert">
-        // Įrašas pakeistas!</div>);
-        setTimeout(() => {
-          location.reload();
-        }, 40)
-      })
-    }
-
     formValidation = () =>{
+        
       const {title,amount,category} = this.state;
       let isValid = true;
       const errors = {};
@@ -89,7 +75,8 @@ class UpdateIncomeModal extends Component {
         errors.titleTooLong = "Pavadinimas negali būti ilgesnis nei 20 simbolių";
         isValid = false;
       }
-      else if(amount.includes("-")){
+      else if(amount.valueOf()<0.01){
+
         errors.amountMinus = "Negalima įvesti neigiamo skaičiaus.";
         isValid = false;
       }
@@ -97,14 +84,28 @@ class UpdateIncomeModal extends Component {
         errors.amountLength = "Įveskite sumą, skaičių.";
         isValid = false;
       }
-      else if(amount.trim().length > 5){
-        errors.amountTooLong = "Sumažinkite sumą. Suma negali viršyti keturženklės sumos";
-        isValid = false;
-      }
       else if(category.trim().length < 2){
         errors.categorySelect = "Pamiršote pasirinkti kategoriją.";
         isValid = false;
-      } else
+      }
+      else if (amount.includes('.')) {
+       if(amount.split('.')[0].length>4 ||
+        amount.split('.')[1].length>2){
+        errors.amountTooLong = "Sumažinkite sumą. Suma negali viršyti keturženklės sumos ir dviejų skaičių po kalbelio";
+        isValid = false;
+        }else {
+          isValid = true;
+        }   
+      }
+      else if (!amount.includes('.')) {
+        if(amount.trim().length>4 ){
+         errors.amountTooLong = "Sumažinkite sumą. Suma negali viršyti keturženklės sumos ir dviejų skaičių po kalbelio";
+         isValid = false;
+        }else {
+          isValid = true;
+        }
+       }
+       else
       window.location.reload();
       this.setState({errors});
       return isValid;
@@ -115,8 +116,21 @@ class UpdateIncomeModal extends Component {
       const isValid = this.formValidation();
       if(isValid){
         this.setState({title : "", amount : "", category : ""});
+        axios.post('update/income/data',{
+          id:this.props.modalIncomeId,
+          title: this.state.title,
+          amount: this.state.amount,
+          category: this.state.category,
+        }).then(()=> {
+           location.reload();
+         
+        })
       }
     }
+
+
+
+
 
     render(){
       const {title, amount, category, errors} = this.state;
@@ -136,7 +150,7 @@ class UpdateIncomeModal extends Component {
                           
                       </div>  
                       <div className='form-group col-md-6'>
-                             <input className="form-control " type="number" min="0"
+                             <input className="form-control " type="number" step="0.01" 
                           id="amount" value={amount}
                           onChange={this.inputIncomeAmount}/>
                       </div>
@@ -153,7 +167,7 @@ class UpdateIncomeModal extends Component {
                           })}
                   <div className="modal-footer">
                     <input type="submit" className='btn btn-secondary btn-sm'
-                           value="Pakeisti" onClick={this.updateIncomeData}/>
+                           value="Pakeisti" />
                     <button type="button" className="btn btn-light btn-sm" data-bs-dismiss="modal">Uždaryti</button>
                   </div>
                   </form>

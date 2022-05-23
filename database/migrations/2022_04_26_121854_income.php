@@ -16,10 +16,12 @@ return new class extends Migration
         Schema::create('incomes', function (Blueprint $table) {
             $table->increments('id');
             $table->string('title', 20);
-            $table->float('amount', 6);
+            $table->decimal('amount',  6,  2);
             $table->string('category', 75);
             $table->datetime('created_at');
             $table->datetime('updated_at');
+
+  
         });
     }
 

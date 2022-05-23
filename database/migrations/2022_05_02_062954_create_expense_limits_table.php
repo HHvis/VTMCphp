@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->foreignID('expnese_id');
             $table->foreignID('vartotojo_id');
-            $table->string('amount');
+            $table->decimal('amount', 6, 2);
         });
     }
 
