@@ -64,7 +64,7 @@ class ExpenseLimits extends Component {
            }   
          }
          else if (!amount.includes('.')) {
-           if(amount.trim().length>4){
+           if(amount.trim().length>6){
             errors.amountTooLong = "Sumažinkite sumą. Suma negali viršyti keturženklės sumos ir dviejų skaičių po kalbelio";
             isValid = false;
              }else {
