@@ -30,6 +30,7 @@ class CreateExpenseModal extends Component {
       }
       
       formValidation = () =>{
+        
         const {title,amount,category} = this.state;
         let isValid = true;
         const errors = {};
@@ -42,6 +43,7 @@ class CreateExpenseModal extends Component {
           isValid = false;
         }
         else if(amount.valueOf()<0.01){
+
           errors.amountMinus = "Negalima įvesti neigiamo skaičiaus.";
           isValid = false;
         }
@@ -49,14 +51,28 @@ class CreateExpenseModal extends Component {
           errors.amountLength = "Įveskite sumą, skaičių.";
           isValid = false;
         }
-        else if(amount.trim().length > 4){
-          errors.amountTooLong = "Sumažinkite sumą. Suma negali viršyti keturženklės sumos";
-          isValid = false;
-        }
         else if(category.trim().length < 2){
           errors.categorySelect = "Pamiršote pasirinkti kategoriją.";
           isValid = false;
-        } else
+        }
+        else if (amount.includes('.')) {
+         if(amount.split('.')[0].length>4 ||
+          amount.split('.')[1].length>2){
+          errors.amountTooLong = "Sumažinkite sumą. Suma negali viršyti keturženklės sumos ir dviejų skaičių po kalbelio";
+          isValid = false;
+          }else {
+            isValid = true;
+          }   
+        }
+        else if (!amount.includes('.')) {
+          if(amount.trim().length>4){
+           errors.amountTooLong = "Sumažinkite sumą. Suma negali viršyti keturženklės sumos ir dviejų skaičių po kalbelio";
+           isValid = false;
+          }else {
+            isValid = true;
+          }
+         }
+         else
         window.location.reload();
         this.setState({errors});
         return isValid;

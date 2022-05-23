@@ -64,20 +64,9 @@ class UpdateExpenseModal extends Component {
       return expenseUpdate;
     }
 
-    updateExpenseData =() => { 
-      axios.post('update/expense/data',{
-        id:this.props.modalExpenseId,
-        title: this.state.title,
-        amount: this.state.amount,
-        category: this.state.category,
-      }).then(()=> {
-        setTimeout(() => {
-          location.reload();
-        }, 40)
-      })
-    }
 
     formValidation = () =>{
+        
       const {title,amount,category} = this.state;
       let isValid = true;
       const errors = {};
@@ -89,7 +78,8 @@ class UpdateExpenseModal extends Component {
         errors.titleTooLong = "Pavadinimas negali būti ilgesnis nei 20 simbolių";
         isValid = false;
       }
-      else if(amount.includes("-")){
+      else if(amount.valueOf()<0.01){
+
         errors.amountMinus = "Negalima įvesti neigiamo skaičiaus.";
         isValid = false;
       }
@@ -97,14 +87,28 @@ class UpdateExpenseModal extends Component {
         errors.amountLength = "Įveskite sumą, skaičių.";
         isValid = false;
       }
-      else if(amount.trim().length > 5){
-        errors.amountTooLong = "Sumažinkite sumą. Suma negali viršyti keturženklės sumos";
-        isValid = false;
-      }
       else if(category.trim().length < 2){
         errors.categorySelect = "Pamiršote pasirinkti kategoriją.";
         isValid = false;
-      } else
+      }
+      else if (amount.includes('.')) {
+       if(amount.split('.')[0].length>4 ||
+        amount.split('.')[1].length>2){
+        errors.amountTooLong = "Sumažinkite sumą. Suma negali viršyti keturženklės sumos ir dviejų skaičių po kalbelio";
+        isValid = false;
+        }else {
+          isValid = true;
+        }   
+      }
+      else if (!amount.includes('.')) {
+        if(amount.trim().length>4){
+         errors.amountTooLong = "Sumažinkite sumą. Suma negali viršyti keturženklės sumos ir dviejų skaičių po kalbelio";
+         isValid = false;
+        }else {
+          isValid = true;
+        }
+       }
+       else
       window.location.reload();
       this.setState({errors});
       return isValid;
@@ -115,6 +119,15 @@ class UpdateExpenseModal extends Component {
       const isValid = this.formValidation();
       if(isValid){
         this.setState({title : "", amount : "", category : ""});
+        axios.post('update/expense/data',{
+          id:this.props.modalExpenseId,
+          title: this.state.title,
+          amount: this.state.amount,
+          category: this.state.category,
+        }).then(()=> {
+           location.reload();
+         
+        })
       }
     }
 
@@ -136,11 +149,10 @@ class UpdateExpenseModal extends Component {
                           
                       </div>  
                       <div className='form-group col-md-6'>
-                             <input className="form-control"  min="1" type="number"
-                          id="amount" value={amount}
+                             <input className="form-control"  type="number"
+                          id="amount" value={amount} step="0.01"
                           onChange={this.inputExpenseAmount}/>
                       </div>
-
                       <div className='form-group col-md-6'>
                                 <select className="form-control col-md-5" id="category" value={category} onChange={this.inputExpenseCategory} required>
                                   <option disabled selected>Kategorija</option>
@@ -156,7 +168,7 @@ class UpdateExpenseModal extends Component {
                           })}
                           <div className="modal-footer">
                     <input type="submit" className='btn btn-secondary btn-sm'
-                           value="Pakeisti" onClick={this.updateExpenseData}/>
+                           value="Pakeisti" />
                     <button type="button" className="btn btn-light btn-sm" data-bs-dismiss="modal">Uždaryti</button>
                   </div>
                     </form>
