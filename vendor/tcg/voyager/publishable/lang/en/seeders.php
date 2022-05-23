@@ -71,8 +71,8 @@ return [
         'users'        => 'Vartotojai',
     ],
     'roles'      => [
-        'admin' => 'Administrator',
-        'user'  => 'Normal User',
+        'admin' => 'Administratorius',
+        'user'  => 'Paprastas vartotojas',
     ],
     'settings'   => [
         'admin' => [
