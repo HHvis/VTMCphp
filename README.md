@@ -35,6 +35,7 @@ php artisan serve
 ```
 7. Projekto administravimo skiltis
 ```
+jei nėra duomenų bazės tai php artisan migrate, jei jau egzituoja tuomet php artisan migrate:fresh
 php artisan db:seed --class=VoyagerDatabaseSeeder
 php artisan voyager:admin admin@admin.lt --create
 ```
