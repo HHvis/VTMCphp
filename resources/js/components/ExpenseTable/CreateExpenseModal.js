@@ -58,7 +58,7 @@ class CreateExpenseModal extends Component {
         else if (amount.includes('.')) {
          if(amount.split('.')[0].length>4 ||
           amount.split('.')[1].length>2){
-          errors.amountTooLong = "Sumažinkite sumą. Suma negali viršyti keturženklės sumos ir dviejų skaičių po kalbelio";
+          errors.amountTooLong = "Sumažinkite sumą. Suma negali viršyti keturženklės sumos ir dviejų skaičių po kablelio.";
           isValid = false;
           }else {
             isValid = true;
@@ -66,7 +66,7 @@ class CreateExpenseModal extends Component {
         }
         else if (!amount.includes('.')) {
           if(amount.trim().length>6){
-           errors.amountTooLong = "Sumažinkite sumą. Suma negali viršyti keturženklės sumos ir dviejų skaičių po kalbelio";
+           errors.amountTooLong = "Sumažinkite sumą. Suma negali viršyti keturženklės sumos ir dviejų skaičių po kablelio.";
            isValid = false;
           }else {
             isValid = true;
