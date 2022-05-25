@@ -20,4 +20,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::get('/expense', 'App\Http\Controllers\IncomeExpenseController@getExpenseList');
+Route::get('/income', 'App\Http\Controllers\IncomeExpenseController@getIncomeList');
+
 

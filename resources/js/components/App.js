@@ -9,7 +9,8 @@ import ExpenseLimits from './ExpenseLimits/ExpenseLimits';
 
 function App() {
   let urlList = {
-    table: '/table'
+    table: '/table',
+    table2: '/table2'
   }
 
   return (
@@ -71,14 +72,11 @@ function App() {
     </div>
 
     <div className="row">
-    <div className="col-xl-6 col-lg-12">
+    <div className="col-xl-8 col-lg-8">
         <div className="card border-left-success shadow mb-4">
             <div
                 className="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                <h6 className="text-xs font-weight-bold text-secondary text-uppercase mb-1">Pajamų ir išlaidų suvestinė</h6>
-                <div className="dropdown no-arrow">
-                   <h2><a href={urlList.table}><BsFillArrowRightSquareFill color="#adb5bd"/></a></h2>
-                </div>
+                <h6 className="text-xs font-weight-bold text-secondary text-uppercase mb-1">Pajamų ir išlaidų sąrašas</h6>
             </div>
             <div className="card-body">
                 <div className="chart-area"></div>
@@ -87,19 +85,29 @@ function App() {
             </div>
         </div>
               
-    <div className="col-xl-6 col-lg-6">
+    <div className="col-xl-4 col-lg-4">
         <div className="card border-left-success shadow mb-4">
-            <div
-                className="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                <h6 className="text-xs font-weight-bold text-secondary text-uppercase mb-1">Grafikas</h6>
-            </div>
-            <div className="card-body">
-                <div className="pt-4 pb-2">
+            <div className="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                <h6 className="text-xs font-weight-bold text-secondary text-uppercase mb-1">Pajamų suvestinė</h6>
+                <div className="dropdown no-arrow">
+                   <h2><a href={urlList.table2}><BsFillArrowRightSquareFill color="#adb5bd"/></a></h2>
                 </div>
             </div>
+                <img src="/images/income.png" class="img-fluid mx-auto w-50" alt="income"></img>
+        </div>
+        <div className="card border-left-success shadow mb-4">
+            <div className="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                <h6 className="text-xs font-weight-bold text-secondary text-uppercase mb-1">Išlaidų suvestinė</h6>
+                <div className="dropdown no-arrow">
+                   <h2><a href={urlList.table}><BsFillArrowRightSquareFill color="#adb5bd"/></a></h2>
+                </div>
+            </div>
+            <img src="/images/expense.png" class="img-fluid mx-auto w-50" alt="expense"></img>
+
         </div>
     </div>
 </div>
+
 <div className="row">
         <div className="col mb-4">
             <div className="card shadow mb-4">           
