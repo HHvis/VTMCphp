@@ -6,6 +6,7 @@ import  "react-icons/fa";
 import Table from './components/Table';
 import Income from './components/IncomeTable/Income';
 import Expense from './components/ExpenseTable/Expense';
+import Table2 from './components/Table2';
 
 
 
@@ -24,4 +25,8 @@ if (document.getElementById('income')) {
 
 if (document.getElementById('expense')) {
     ReactDOM.render(<Expense />, document.getElementById('expense'));
+}
+
+if (document.getElementById('table2')) {
+    ReactDOM.render(<Table2 />, document.getElementById('table2'));
 }
