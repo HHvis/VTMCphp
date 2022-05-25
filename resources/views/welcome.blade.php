@@ -49,7 +49,7 @@
 </section>
 <section>
 <div class="container">
-        <h1 class="m-3" style="padding-top: 7%;"><span class="text-success">Paprastas</span> būdas stebėti savo pajamas ir išlaidas</h1>
+        <h1 class="m-3 text-center" style="padding-top: 7%;"><span class="text-success">Paprastas</span> būdas stebėti savo pajamas ir išlaidas</h1>
 <!-- Carousel -->
 <div id="demo" class="carousel slide" data-bs-ride="carousel">
 
@@ -83,6 +83,7 @@
   <button class="carousel-control-next" type="button" data-bs-target="#demo" data-bs-slide="next">
     <span class="carousel-control-next-icon"></span> 
   </button>
+  
 </div>
 </div>
 </section>
