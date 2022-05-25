@@ -23,6 +23,7 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/table', [App\Http\Controllers\TableController::class, 'index'])->name('table');
+Route::get('/table2', [App\Http\Controllers\Table2Controller::class, 'index'])->name('table2');
 
 Route::post('/get/each/income/details', [IncomeController::class, 'getIncomeDetails'])->name('income.details');
 Route::get('/get/income/list', [IncomeController::class, 'getIncomeList'])->name('income.list');
