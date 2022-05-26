@@ -29,7 +29,7 @@ class ExpenseLimit extends Component {
         
         
         let expenses =this.state.expenses;
-        let ExpenseLimitSum =expenses.filter(({category})=>category===this.props.data.expnese_id).reduce((limitExpense, expense) =>  limitExpense + expense.amount, 0);
+        let ExpenseLimitSum =expenses.filter(({category})=>category===this.props.data.expnese_id).reduce((limitExpense, expense) =>  Number(limitExpense) + Number(expense.amount), 0);
                 return ((ExpenseLimitSum*100/this.props.data.amount));
     }
 
