@@ -7,8 +7,9 @@
   <li>PHP 8.0</li>
   <li>Laravel 8</li>
   <li>React 17</li>
-  <li>Composer</li>
   <li>MySql xx</li>
+  <li>Composer xx</li>
+  <li>NPM xx</li>
 </ul> 
 
 <h2 align="center">PROJEKTO PALEIDIMAS</h2>
