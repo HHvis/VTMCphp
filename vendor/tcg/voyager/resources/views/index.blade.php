@@ -8,11 +8,6 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <title>VTMCphp</title>
-
-        <!-- Fonts -->
-  <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
-  
-        <!-- Styles -->
     </head>
 <body>
 <div class="container">
@@ -28,7 +23,7 @@
           <div class="card-body">
             <div class="d-flex justify-content-between px-md-1">
               <div class="align-self-center">
-                <i class="fas fa-pencil-alt text-info fa-3x"></i>
+              <img src="/images/Icon-admin-1.png" width="60" height="60" alt="">
               </div>
               <div class="text-end">
                 <h3>Koreguoti</h3>
@@ -44,7 +39,7 @@
           <div class="card-body">
             <div class="d-flex justify-content-between px-md-1">
               <div class="align-self-center">
-                <i class="far fa-user text-success fa-3x"></i>
+              <img src="/images/Icon-admin-2.png" width="60" height="60" alt="">
               </div>
               <div class="text-end">
                 <h3>Koreguoti</h3>
@@ -60,7 +55,7 @@
           <div class="card-body">
             <div class="d-flex justify-content-between px-md-1">
               <div class="align-self-center">
-                <i class="far fa-life-ring text-info fa-3x"></i>
+              <img src="/images/Icon-admin-3.png" width="60" height="60" alt="">
               </div>
               <div class="text-end">
                 <h3>Peržiūrėti</h3>
