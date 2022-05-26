@@ -396,15 +396,7 @@ class DataRowsTableSeeder extends Seeder
                 'edit'         => 1,
                 'add'          => 1,
                 'delete'       => 1,
-                'details'      => '{
-                                    "validation":{
-                                        "rule":"required|min:1|max:12|unique:expense_category,pavadinimas",
-                                        "messages":{
-                                            "required":"Įveskite pavadinimą",
-                                            "min":"Įveskite pavadinimą",
-                                            "max":"Pavadinimo limitas - 12 simbolių",
-                                            "unique":"Tokia kategorija jau egzistuoja",
-                                        }}}',
+                'details'      => json_decode('{"validation":{"rule":"required|min:1|max:12|unique:expense_category,pavadinimas","messages":{"required":"Įveskite pavadinimą","min":"Įveskite pavadinimą","max":"Pavadinimo limitas - 12 simbolių","unique":"Tokia kategorija jau egzistuoja"}}}'),
                 'order'        => 2,
             ])->save();
         }
