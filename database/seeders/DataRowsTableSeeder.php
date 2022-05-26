@@ -398,7 +398,7 @@ class DataRowsTableSeeder extends Seeder
                 'delete'       => 1,
                 'details'      => '{
                                     "validation":{
-                                        "rules":"required|min:1|max:12|unique:expense_category,pavadinimas",
+                                        "rule":"required|min:1|max:12|unique:expense_category,pavadinimas",
                                         "messages":{
                                             "required":"Įveskite pavadinimą",
                                             "min":"Įveskite pavadinimą",
