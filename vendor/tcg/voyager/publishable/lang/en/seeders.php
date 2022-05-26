@@ -59,7 +59,7 @@ return [
         'bread'        => 'BREAD',
         'categories'   => 'Categories',
         'compass'      => 'Compasas',
-        'dashboard'    => 'Pagrininis',
+        'dashboard'    => 'Pagrindinis',
         'database'     => 'Duombazė',
         'media'        => 'Media',
         'menu_builder' => 'Menu Builder',
