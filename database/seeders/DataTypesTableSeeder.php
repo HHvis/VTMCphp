@@ -54,6 +54,20 @@ class DataTypesTableSeeder extends Seeder
                 'description'           => '',
             ])->save();
         }
+
+        $dataType = $this->dataType('slug', 'expense_category');
+        if (!$dataType->exists) {
+            $dataType->fill([
+                'name'                  => 'expense_category',
+                'display_name_singular' => 'Kategorijos',
+                'display_name_plural'   => 'Kategorijos',
+                'icon'                  => 'voyager-list',
+                'model_name'            => 'App\Models\ExpenseCategories',
+                'controller'            => '',
+                'generate_permissions'  => 1,
+                'description'           => '',
+            ])->save();
+        }
     }
 
     /**
