@@ -79,7 +79,7 @@ return [
     'rename'                 => 'Rename',
     'remember_me'            => 'Remember me',
     'required'               => 'Required',
-    'return_to_list'         => 'Return to List',
+    'return_to_list'         => 'Grįžti į sąrašą',
     'route'                  => 'Route',
     'save'                   => 'Išsaugoti',
     'search'                 => 'Ieškoti',
