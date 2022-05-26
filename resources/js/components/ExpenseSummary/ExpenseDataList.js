@@ -48,7 +48,7 @@ function ExpenseDataList(){
 
     //Api sukuriau per Laravel/API
     useEffect(() => {
-        fetch('http://127.0.0.1:8000/api/expense')
+        fetch('/get/expenses')
         .then(response => response.json())
         .then(result => setUserList(result))
         .catch(error => console.log(error))
