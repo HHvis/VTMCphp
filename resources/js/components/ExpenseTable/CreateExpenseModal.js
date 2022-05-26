@@ -1,5 +1,5 @@
 import axios from 'axios';
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 
 class CreateExpenseModal extends Component {
 
@@ -9,7 +9,8 @@ class CreateExpenseModal extends Component {
             title:'',
             amount:'',
             category:'',
-            errors: {}
+            errors: {},
+            expenseCategories:[]
           }
     }
 
@@ -34,6 +35,7 @@ class CreateExpenseModal extends Component {
         const {title,amount,category} = this.state;
         let isValid = true;
         const errors = {};
+
         if(title.trim().length < 1){
           errors.titleLength = "Pavadinimas privalo turėti 1-20 simbolių";
           isValid = false;
@@ -51,26 +53,23 @@ class CreateExpenseModal extends Component {
           errors.amountLength = "Įveskite sumą, skaičių.";
           isValid = false;
         }
-        else if(category.trim().length < 2){
+        else if(category.trim().length < 1){
+          console.log(typeof(category.valueOf()));
           errors.categorySelect = "Pamiršote pasirinkti kategoriją.";
           isValid = false;
         }
         else if (amount.includes('.')) {
          if(amount.split('.')[0].length>4 ||
           amount.split('.')[1].length>2){
-          errors.amountTooLong = "Sumažinkite sumą. Suma negali viršyti keturženklės sumos ir dviejų skaičių po kablelio.";
+          errors.amountTooLong = "Sumažinkite sumą. Suma negali viršyti keturženklės sumos ir dviejų skaičių po kalbelio";
           isValid = false;
-          }else {
-            isValid = true;
-          }   
+          }
         }
         else if (!amount.includes('.')) {
           if(amount.trim().length>6){
-           errors.amountTooLong = "Sumažinkite sumą. Suma negali viršyti keturženklės sumos ir dviejų skaičių po kablelio.";
+           errors.amountTooLong = "Sumažinkite sumą. Suma negali viršyti keturženklės sumos ir dviejų skaičių po kalbelio";
            isValid = false;
-          }else {
-            isValid = true;
-          }
+          }else {isValid = true}
          }
          else
         window.location.reload();
@@ -92,6 +91,17 @@ class CreateExpenseModal extends Component {
         })
       }
      }
+
+     componentDidMount(){
+      this.getExpenseCategoryList();
+      console.log('mounteeeed');
+  }
+
+  getExpenseCategoryList = () =>{
+      axios.get('/get/expense_categories/list').then((response) => {
+          this.setState({expenseCategories: response.data});
+      });
+  }
       
      render(){
       const {title, amount, errors} = this.state;
@@ -120,12 +130,10 @@ class CreateExpenseModal extends Component {
             </div>
             <div className='form-group col-md-6'>
               <select className="form-control col-md-5" id="category" onChange={this.inputExpenseCategory} required>
+
                   <option disabled selected>Kategorija</option>
-                  <option value="Maistui">Maistui</option>
-                  <option value="Drabužiams">Drabužiams</option>
-                  <option value="Vaistams">Vaistams</option>
-                  <option value="Kurui">Kurui</option>
-                  <option value="Auto taisymui">Auto taisymui</option>
+                  {this.state.expenseCategories.map((expenseCategory) => (<option value={expenseCategory.pavadinimas}>{expenseCategory.pavadinimas}</option>) )}
+
               </select>
             </div>
             {Object.keys(errors).map((key)=>{

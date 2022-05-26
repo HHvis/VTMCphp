@@ -10,7 +10,8 @@ class UpdateExpenseModal extends Component {
           title:null,
           amount:null,
           category:null,
-          errors: {}
+          errors: {},
+          expenseCategories:[]
 
         }
     }
@@ -131,6 +132,16 @@ class UpdateExpenseModal extends Component {
       }
     }
 
+    componentDidMount(){
+      this.getExpenseCategoryList();
+  }
+    getExpenseCategoryList = () =>{
+      axios.get('/get/expense_categories/list').then((response) => {
+          this.setState({expenseCategories: response.data});
+      });
+  }
+
+
     render(){
       const {title, amount, category, errors} = this.state;
         return (
@@ -156,11 +167,7 @@ class UpdateExpenseModal extends Component {
                       <div className='form-group col-md-6'>
                                 <select className="form-control col-md-5" id="category" value={category} onChange={this.inputExpenseCategory} required>
                                   <option disabled selected>Kategorija</option>
-                                  <option value="Maistui">Maistui</option>
-                                  <option value="Drabužiams">Drabužiams</option>
-                                  <option value="Vaistams">Vaistams</option>
-                                  <option value="Kurui">Kurui</option>
-                                  <option value="Auto taisymui">Auto taisymui</option>
+                                    {this.state.expenseCategories.map((expenseCategory) => (<option value={expenseCategory.pavadinimas}>{expenseCategory.pavadinimas}</option>) )}
                                 </select>
                           </div>
                           {Object.keys(errors).map((key)=>{

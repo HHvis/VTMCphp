@@ -65,6 +65,22 @@ class MenuItemsTableSeeder extends Seeder
             ])->save();
         }
 
+        $menuItem = MenuItem::firstOrNew([
+            'menu_id' => $menu->id,
+            'title'   => 'Kategorijos',
+            'url'     => '',
+            'route'   => 'voyager.expense_category.index',
+        ]);
+        if (!$menuItem->exists) {
+            $menuItem->fill([
+                'target'     => '_self',
+                'icon_class' => 'voyager-list',
+                'color'      => null,
+                'parent_id'  => null,
+                'order'      => 4,
+            ])->save();
+        }
+
         // $menuItem = MenuItem::firstOrNew([
         //     'menu_id' => $menu->id,
         //     'title'   => __('voyager::seeders.menu_items.roles'),
@@ -81,84 +97,84 @@ class MenuItemsTableSeeder extends Seeder
         //     ])->save();
         // }
 
-        $toolsMenuItem = MenuItem::firstOrNew([
-            'menu_id' => $menu->id,
-            'title'   => __('voyager::seeders.menu_items.tools'),
-            'url'     => '',
-        ]);
-        if (!$toolsMenuItem->exists) {
-            $toolsMenuItem->fill([
-                'target'     => '_self',
-                'icon_class' => 'voyager-tools',
-                'color'      => null,
-                'parent_id'  => null,
-                'order'      => 9,
-            ])->save();
-        }
-
-        $menuItem = MenuItem::firstOrNew([
-            'menu_id' => $menu->id,
-            'title'   => __('voyager::seeders.menu_items.menu_builder'),
-            'url'     => '',
-            'route'   => 'voyager.menus.index',
-        ]);
-        if (!$menuItem->exists) {
-            $menuItem->fill([
-                'target'     => '_self',
-                'icon_class' => 'voyager-list',
-                'color'      => null,
-                'parent_id'  => $toolsMenuItem->id,
-                'order'      => 10,
-            ])->save();
-        }
-
-        $menuItem = MenuItem::firstOrNew([
-            'menu_id' => $menu->id,
-            'title'   => __('voyager::seeders.menu_items.database'),
-            'url'     => '',
-            'route'   => 'voyager.database.index',
-        ]);
-        if (!$menuItem->exists) {
-            $menuItem->fill([
-                'target'     => '_self',
-                'icon_class' => 'voyager-data',
-                'color'      => null,
-                'parent_id'  => $toolsMenuItem->id,
-                'order'      => 11,
-            ])->save();
-        }
-
-        $menuItem = MenuItem::firstOrNew([
-            'menu_id' => $menu->id,
-            'title'   => __('voyager::seeders.menu_items.compass'),
-            'url'     => '',
-            'route'   => 'voyager.compass.index',
-        ]);
-        if (!$menuItem->exists) {
-            $menuItem->fill([
-                'target'     => '_self',
-                'icon_class' => 'voyager-compass',
-                'color'      => null,
-                'parent_id'  => $toolsMenuItem->id,
-                'order'      => 12,
-            ])->save();
-        }
-
-        $menuItem = MenuItem::firstOrNew([
-            'menu_id' => $menu->id,
-            'title'   => __('voyager::seeders.menu_items.bread'),
-            'url'     => '',
-            'route'   => 'voyager.bread.index',
-        ]);
-        if (!$menuItem->exists) {
-            $menuItem->fill([
-                'target'     => '_self',
-                'icon_class' => 'voyager-bread',
-                'color'      => null,
-                'parent_id'  => $toolsMenuItem->id,
-                'order'      => 13,
-            ])->save();
-        }
+//         $toolsMenuItem = MenuItem::firstOrNew([
+//             'menu_id' => $menu->id,
+//             'title'   => __('voyager::seeders.menu_items.tools'),
+//             'url'     => '',
+//         ]);
+//         if (!$toolsMenuItem->exists) {
+//             $toolsMenuItem->fill([
+//                 'target'     => '_self',
+//                 'icon_class' => 'voyager-tools',
+//                 'color'      => null,
+//                 'parent_id'  => null,
+//                 'order'      => 9,
+//             ])->save();
+//         }
+//
+//         $menuItem = MenuItem::firstOrNew([
+//             'menu_id' => $menu->id,
+//             'title'   => __('voyager::seeders.menu_items.menu_builder'),
+//             'url'     => '',
+//             'route'   => 'voyager.menus.index',
+//         ]);
+//         if (!$menuItem->exists) {
+//             $menuItem->fill([
+//                 'target'     => '_self',
+//                 'icon_class' => 'voyager-list',
+//                 'color'      => null,
+//                 'parent_id'  => $toolsMenuItem->id,
+//                 'order'      => 10,
+//             ])->save();
+//         }
+//
+//         $menuItem = MenuItem::firstOrNew([
+//             'menu_id' => $menu->id,
+//             'title'   => __('voyager::seeders.menu_items.database'),
+//             'url'     => '',
+//             'route'   => 'voyager.database.index',
+//         ]);
+//         if (!$menuItem->exists) {
+//             $menuItem->fill([
+//                 'target'     => '_self',
+//                 'icon_class' => 'voyager-data',
+//                 'color'      => null,
+//                 'parent_id'  => $toolsMenuItem->id,
+//                 'order'      => 11,
+//             ])->save();
+//         }
+//
+//         $menuItem = MenuItem::firstOrNew([
+//             'menu_id' => $menu->id,
+//             'title'   => __('voyager::seeders.menu_items.compass'),
+//             'url'     => '',
+//             'route'   => 'voyager.compass.index',
+//         ]);
+//         if (!$menuItem->exists) {
+//             $menuItem->fill([
+//                 'target'     => '_self',
+//                 'icon_class' => 'voyager-compass',
+//                 'color'      => null,
+//                 'parent_id'  => $toolsMenuItem->id,
+//                 'order'      => 12,
+//             ])->save();
+//         }
+//
+//         $menuItem = MenuItem::firstOrNew([
+//             'menu_id' => $menu->id,
+//             'title'   => __('voyager::seeders.menu_items.bread'),
+//             'url'     => '',
+//             'route'   => 'voyager.bread.index',
+//         ]);
+//         if (!$menuItem->exists) {
+//             $menuItem->fill([
+//                 'target'     => '_self',
+//                 'icon_class' => 'voyager-bread',
+//                 'color'      => null,
+//                 'parent_id'  => $toolsMenuItem->id,
+//                 'order'      => 13,
+//             ])->save();
+//         }
 
         // $menuItem = MenuItem::firstOrNew([
         //     'menu_id' => $menu->id,

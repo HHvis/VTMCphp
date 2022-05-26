@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('expense_limits', function (Blueprint $table) {
             $table->id();
-            $table->foreignID('expnese_id');
+            $table->string('expnese_id');
             $table->foreignID('vartotojo_id');
             $table->decimal('amount', 6, 2);
         });

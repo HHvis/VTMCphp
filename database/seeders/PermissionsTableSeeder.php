@@ -33,6 +33,8 @@ class PermissionsTableSeeder extends Seeder
 
         Permission::generateFor('users');
 
+        Permission::generateFor('expense_category');
+
         Permission::generateFor('settings');
     }
 }

@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\IncomeController;
 use App\Http\Controllers\ExpenseController;
 use App\Http\Controllers\LimitController;
+use App\Http\Controllers\ExpenseCategoryController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -23,7 +24,6 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/table', [App\Http\Controllers\TableController::class, 'index'])->name('table');
-Route::get('/table2', [App\Http\Controllers\Table2Controller::class, 'index'])->name('table2');
 
 Route::post('/get/each/income/details', [IncomeController::class, 'getIncomeDetails'])->name('income.details');
 Route::get('/get/income/list', [IncomeController::class, 'getIncomeList'])->name('income.list');
@@ -43,6 +43,7 @@ Route::get('/get/expenses', [App\Http\Controllers\IncomeExpenseController::class
 Route::post('/store/limit/data', [LimitController::class, 'storeLimits']);
 Route::get('/get/limits', [LimitController::class, 'getLimits']);
 
+Route::get('/get/expense_categories/list', [ExpenseCategoryController::class, 'getExpenseCategoryList'])->name('expenseCategory.list');
 
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();

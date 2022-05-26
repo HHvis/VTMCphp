@@ -27,51 +27,18 @@ class ExpenseLimit extends Component {
 
     ExpenseLimitProgress=()=>{
         
-        if (this.props.data.expnese_id==1)
-        {
+        
         let expenses =this.state.expenses;
-        let ExpenseLimitSum =expenses.filter(({category})=>category==='Maistui').reduce((limitExpense, expense) =>  limitExpense + expense.amount, 0);
-                return ((ExpenseLimitSum*100/this.props.data.amount))
-        }else if (this.props.data.expnese_id==2) {
-            let expenses =this.state.expenses;
-        let ExpenseLimitSum =expenses.filter(({category})=>category==='Drabužiams').reduce((limitExpense, expense) =>  limitExpense + expense.amount, 0);
-                return ((ExpenseLimitSum*100/this.props.data.amount)) 
-        }else if (this.props.data.expnese_id==3) {
-            let expenses =this.state.expenses;
-        let ExpenseLimitSum =expenses.filter(({category})=>category==='Vaistams').reduce((limitExpense, expense) =>  limitExpense + expense.amount, 0);
-                return ((ExpenseLimitSum*100/this.props.data.amount))
-            
-        }else if (this.props.data.expnese_id==4) {
-            let expenses =this.state.expenses;
-        let ExpenseLimitSum =expenses.filter(({category})=>category==='Kurui').reduce((limitExpense, expense) =>  limitExpense + expense.amount, 0);
-                return ((ExpenseLimitSum*100/this.props.data.amount))
-            
-        }
-        else if (this.props.data.expnese_id==5) {
-            let expenses =this.state.expenses;
-        let ExpenseLimitSum =expenses.filter(({category})=>category==='Auto taisymui').reduce((limitExpense, expense) =>  limitExpense + expense.amount, 0);
-                return ((ExpenseLimitSum*100/this.props.data.amount))  
-        }  
-        };
+        let ExpenseLimitSum =expenses.filter(({category})=>category===this.props.data.expnese_id).reduce((limitExpense, expense) =>  limitExpense + expense.amount, 0);
+                return ((ExpenseLimitSum*100/this.props.data.amount));
+    }
 
 
 
     render(){
          return (
             <div>
-                <h4 className="small font-weight-bold">{(()=>{
-                        switch(this.props.data.expnese_id){
-                            case 1:
-                                return 'Maistui';
-                                case 2:
-                                return 'Drabužiams';
-                                case 3:
-                                return 'Vaistams';
-                                case 4:
-                                return 'Kurui';
-                                case 5:
-                                return 'Auto taisymui';
-                }})()}: <span
+                <h4 className="small font-weight-bold">{this.props.data.expnese_id}: <span
                 className="float-right">{this.props.data.amount} €</span></h4>
                 <div className="progress">
                     <div className="progress-bar bg-success w-20"
@@ -83,5 +50,3 @@ class ExpenseLimit extends Component {
     }
 }
 export default ExpenseLimit;
-
-

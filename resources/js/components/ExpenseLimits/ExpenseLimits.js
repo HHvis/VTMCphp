@@ -12,7 +12,8 @@ class ExpenseLimits extends Component {
             amount:'',
             expnese_id:'',
             limits:[],
-            errors: {}
+            errors: {},
+            expenseCategories:[]
             
         }
     }
@@ -23,8 +24,10 @@ class ExpenseLimits extends Component {
         });
       }
       LimitExpenseCategory = (event) =>{
+
+        const expnese_id=event.target.value;
         this.setState({
-            expnese_id:event.target.value,
+            expnese_id
         });
       }
       
@@ -32,6 +35,7 @@ class ExpenseLimits extends Component {
 
       componentDidMount(){
         this.getLimits();
+        this.getExpenseCategoryList();
     }
 
       getLimits= () =>{
@@ -41,6 +45,16 @@ class ExpenseLimits extends Component {
         });
         }); 
     }
+
+  
+    getExpenseCategoryList = () =>{
+      axios.get('/get/expense_categories/list').then((response) => {
+          this.setState({expenseCategories: response.data});
+      });
+  }
+
+
+
 
     formValidation = () =>{
         const {amount,expnese_id} = this.state;
@@ -96,12 +110,7 @@ class ExpenseLimits extends Component {
       }
      }
 
-
-
-
-
-
-      
+     
 
     render(){  
         const {expnese_id, amount, errors} = this.state;  
@@ -114,12 +123,8 @@ class ExpenseLimits extends Component {
                         </div>
                         <div className=' col-md-6'>
                                 <select className="form-control col-md-4"  value={expnese_id} id="category" onChange={this.LimitExpenseCategory} required>
-                                <option defaultValue >Kategorija</option>
-                                  <option value="1">Maistui</option>
-                                  <option value="2">Drabužiams</option>
-                                  <option value="3">Vaistams</option>
-                                  <option value="4">Kurui</option>
-                                  <option value="5">Auto taisymui</option>
+                                <option disabled selected >Kategorija</option>
+                                {this.state.expenseCategories.map((expenseCategory) => (<option value={expenseCategory.pavadinimas}>{expenseCategory.pavadinimas}</option>) )}
                                 </select>
                         </div>
                         <div className="col">
