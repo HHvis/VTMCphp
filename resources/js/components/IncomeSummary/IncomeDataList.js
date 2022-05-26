@@ -17,7 +17,7 @@ function IncomeDataList(){
 
     
     const columns = [
-        {dataField: 'created_at', text: 'Laikas', sort: true, filter: dateFilter(), 
+        {dataField: 'created_at', text: 'Data', sort: true, filter: dateFilter(), 
         formatter: (cell) => {
             let dateObj = cell;
             if (typeof cell !== 'object') {
@@ -27,15 +27,26 @@ function IncomeDataList(){
           },
           editor: {
             type: Type.DATE
-          },   headerTitle: true,   headerAlign: 'center'},
-        {dataField: 'title', text: 'Pavadinimas', sort: true, filter: textFilter(), headerAlign: 'center'},
-        {dataField: 'category', text: 'Kategorija', headerAlign: 'center'},
-        {dataField: 'amount', text: 'Suma', sort:true, headerAlign: 'center'},
+          },   headerTitle: { hidden: true},   headerAlign: 'center', footer: ''},
+        {dataField: 'title', text: 'Pavadinimas', filter: textFilter({
+            delay: 500, // cia default
+            className: 'test-classname',
+            placeholder: 'Ieškoti pagal pavadinimą...',
+          }), headerAlign: 'center', footer: ''},
+        {dataField: 'category', text: 'Kategorija', filter: textFilter({
+            delay: 500, 
+            className: 'test-classname',
+            placeholder: 'Ieškoti pagal kategoriją...',
+          }), headerAlign: 'center', footer: 'Galutinė visų pajamų suma:'},
+        {dataField: 'amount', text: 'Suma', sort:true, headerAlign: 'center', footer: columnData => userList.reduce((sum, row) => sum + parseFloat(row.amount), 0), 
+        footerStyle: {
+            backgroundColor: '#90EE90'
+          }}
     ]
 
     const pagination = paginationFactory({
         page: 1,
-        sizePerPage: 6,
+        sizePerPage: 5,
         lastPageText: 'Paskutinis',
         firstPageText: 'Pirmas',
         nextPageText: '>',
@@ -70,42 +81,16 @@ function IncomeDataList(){
 
     return(
     <div className='row'>
-                            <p>Šio mėnesio pajamų suma yra: {totalSum}</p>
-
                 <BootstrapTable
-                    bootstrap4 
+                    bootstrap4
                     keyField ='id' 
                     columns={columns} 
                     data={userList}
                     pagination={pagination} 
                     filter={filterFactory()}
+                    // selectRow={ selectRow }
+                    filterPosition="top"
                     />
-
-        <table className='table'>
-            {/* <tr>
-                <th>Data</th>
-                <th>Pavadinimas</th>
-                <th>Suma</th>
-            </tr>
-            {
-                userList ?
-                userList.map(list => 
-                <tr>
-                    <td>{list.created_at.substring(0, 10)}</td>
-                    <td>{list.title}</td>
-                    <d>{list.category}</d>
-                    <td>{list.amount}</td>
-                </tr>
-                )
-                : 'Kraunama...'
-            } */}
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <td><b>Visa pajamų suma:</b></td>
-                    <td><b>{totalSum}</b></td>
-                </tr>
-        </table>
     </div>
     )
 }
