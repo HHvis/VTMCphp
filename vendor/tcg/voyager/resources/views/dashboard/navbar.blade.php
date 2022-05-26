@@ -4,7 +4,7 @@
             <button class="hamburger btn-link">
                 <span class="hamburger-inner"></span>
             </button>
-            @section('breadcrumbs')
+            <!-- @section('breadcrumbs')
             <ol class="breadcrumb hidden-xs">
                 @php
                 $segments = array_filter(explode('/', str_replace(route('voyager.dashboard'), '', Request::url())));
@@ -30,7 +30,7 @@
                     @endforeach
                 @endif
             </ol>
-            @show
+            @show -->
         </div>
         <ul class="nav navbar-nav @if (__('voyager::generic.is_rtl') == 'true') navbar-left @else navbar-right @endif">
             <li class="dropdown profile">
