@@ -16,7 +16,7 @@ function App() {
   return (
     <div>
       <div className="container-fluid">
-      <div className="row">
+      {/* <div className="row">
       <div className="col mb-4">
         <div className="card border-left-success shadow h-100 py-2">
             <div className="card-body">
@@ -40,7 +40,7 @@ function App() {
           </div>
         </div>
     </div>
-    </div>
+    </div> */}
 
     <div className="row">
     <div className="col-xl-6 col-lg-12 col-sm-12 mb-2">
@@ -95,7 +95,7 @@ function App() {
             </div>
                 <img src="/images/income.png" class="img-fluid mx-auto w-50" alt="income"></img>
         </div>
-        <div className="card border-left-success shadow mb-4">
+        <div className="card border-left-success shadow mb-4 p-2">
             <div className="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                 <h6 className="text-xs font-weight-bold text-secondary text-uppercase mb-1">Išlaidų suvestinė</h6>
                 <div className="dropdown no-arrow">

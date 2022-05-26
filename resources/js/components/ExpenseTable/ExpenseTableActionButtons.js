@@ -39,7 +39,7 @@ class ExpenseTableActionButtons extends Component {
                 data-bs-target={"#UpdateExpenseModal"+this.props.eachRowId}
                 onClick={() => {this.getExpenseDetails(this.props.eachRowId)} }
                 >
-            Pakeisti</button>
+            Keisti</button>
             <UpdateExpenseModal modalExpenseId={this.props.eachRowId} expenseData={this.state}/>
 
             <button type="button" 

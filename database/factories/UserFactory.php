@@ -39,4 +39,9 @@ class UserFactory extends Factory
             ];
         });
     }
+
+    public function run()
+    {
+        $this->call(UsersSeeder::class);
+    }
 }

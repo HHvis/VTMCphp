@@ -1,17 +1,23 @@
 import React, {useState, useEffect} from 'react';
 import BootstrapTable from 'react-bootstrap-table-next';
+
 import paginationFactory from 'react-bootstrap-table2-paginator';
-import filterFactory, { textFilter, dateFilter } from 'react-bootstrap-table2-filter';
+import 'react-bootstrap-table2-paginator/dist/react-bootstrap-table2-paginator.min.css';
+
+import filterFactory, { dateFilter, textFilter } from 'react-bootstrap-table2-filter';
+import 'react-bootstrap-table2-filter/dist/react-bootstrap-table2-filter.min.css';
+
 import { Type } from 'react-bootstrap-table2-editor';
+import 'react-bootstrap-table-next/dist/react-bootstrap-table2.min.css';
 
 
 function ExpenseDataList(){
     const [userList, setUserList] = useState([]);
     const [totalSum, setTotalSum] = useState(0);
 
-    
+
     const columns = [
-        {dataField: 'created_at', text: 'Data', sort: true, filter: dateFilter(), 
+        {dataField: 'created_at', text: 'Laikas', sort: true, filter: dateFilter(), 
         formatter: (cell) => {
             let dateObj = cell;
             if (typeof cell !== 'object') {
@@ -21,17 +27,17 @@ function ExpenseDataList(){
           },
           editor: {
             type: Type.DATE
-          }},
-        {dataField: 'title', text: 'Pavadinimas', sort: true},
-        {dataField: 'category', text: 'Kategorija'},
-        {dataField: 'amount', text: 'Suma'},
+          },   headerTitle: true,   headerAlign: 'center'},
+        {dataField: 'title', text: 'Pavadinimas', sort: true, filter: textFilter(), headerAlign: 'center'},
+        {dataField: 'category', text: 'Kategorija', headerAlign: 'center'},
+        {dataField: 'amount', text: 'Suma', sort:true, headerAlign: 'center'},
     ]
 
     const pagination = paginationFactory({
         page: 1,
         sizePerPage: 6,
-        lastPageText: 'Last Page',
-        firstPageText: 'First Page',
+        lastPageText: 'Paskutinis',
+        firstPageText: 'Pirmas',
         nextPageText: '>',
         prePageText: '<',
         showTotal: false,
@@ -48,7 +54,7 @@ function ExpenseDataList(){
 
     //Api sukuriau per Laravel/API
     useEffect(() => {
-        fetch('http://127.0.0.1:8000/api/expense')
+        fetch('/get/expenses')
         .then(response => response.json())
         .then(result => setUserList(result))
         .catch(error => console.log(error))
@@ -64,9 +70,8 @@ function ExpenseDataList(){
 
     return(
     <div className='row'>
-                            <p>Visa išlaidų suma yra: {totalSum}</p>
-
-                <BootstrapTable 
+                <BootstrapTable
+                    bootstrap4
                     keyField ='id' 
                     columns={columns} 
                     data={userList}
@@ -93,10 +98,7 @@ function ExpenseDataList(){
                 : 'Kraunama...'
             } */}
                 <tr>
-                    <td></td>
-                    <td></td>
-                    <td><b>Visa išlaidų suma:</b></td>
-                    <td><b>{totalSum}</b></td>
+                    <td><b>Visa išlaidų suma: {totalSum} Eur</b></td>
                 </tr>
         </table>
     </div>

@@ -1,8 +1,14 @@
 import React, {useState, useEffect} from 'react';
 import BootstrapTable from 'react-bootstrap-table-next';
+
 import paginationFactory from 'react-bootstrap-table2-paginator';
-import filterFactory, { textFilter, dateFilter } from 'react-bootstrap-table2-filter';
+import 'react-bootstrap-table2-paginator/dist/react-bootstrap-table2-paginator.min.css';
+
+import filterFactory, { dateFilter, textFilter } from 'react-bootstrap-table2-filter';
+import 'react-bootstrap-table2-filter/dist/react-bootstrap-table2-filter.min.css';
+
 import { Type } from 'react-bootstrap-table2-editor';
+import 'react-bootstrap-table-next/dist/react-bootstrap-table2.min.css';
 
 
 function IncomeDataList(){
@@ -11,7 +17,7 @@ function IncomeDataList(){
 
     
     const columns = [
-        {dataField: 'created_at', text: 'Data', sort: true, filter: dateFilter(), 
+        {dataField: 'created_at', text: 'Laikas', sort: true, filter: dateFilter(), 
         formatter: (cell) => {
             let dateObj = cell;
             if (typeof cell !== 'object') {
@@ -21,17 +27,17 @@ function IncomeDataList(){
           },
           editor: {
             type: Type.DATE
-          }},
-        {dataField: 'title', text: 'Pavadinimas', sort: true},
-        {dataField: 'category', text: 'Kategorija'},
-        {dataField: 'amount', text: 'Suma', sort:true},
+          },   headerTitle: true,   headerAlign: 'center'},
+        {dataField: 'title', text: 'Pavadinimas', sort: true, filter: textFilter(), headerAlign: 'center'},
+        {dataField: 'category', text: 'Kategorija', headerAlign: 'center'},
+        {dataField: 'amount', text: 'Suma', sort:true, headerAlign: 'center'},
     ]
 
     const pagination = paginationFactory({
         page: 1,
         sizePerPage: 6,
-        lastPageText: 'Last Page',
-        firstPageText: 'First Page',
+        lastPageText: 'Paskutinis',
+        firstPageText: 'Pirmas',
         nextPageText: '>',
         prePageText: '<',
         showTotal: false,
@@ -66,7 +72,8 @@ function IncomeDataList(){
     <div className='row'>
                             <p>Šio mėnesio pajamų suma yra: {totalSum}</p>
 
-                <BootstrapTable 
+                <BootstrapTable
+                    bootstrap4 
                     keyField ='id' 
                     columns={columns} 
                     data={userList}
