@@ -52,3 +52,7 @@
   td:nth-of-type(3):before { content: "Kategorija"; }
 /*   td:nth-of-type(4):before { content: "Veiksmai";} */
 }
+
+span.sr-only {
+  display: none;
+}
